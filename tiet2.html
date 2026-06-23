@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA HOSPITAL – TIẾT 2: BÁC SĨ CỘNG ĐỒNG</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_tiet2.css">
+</head>
+<body>
+  <!-- Canvas for Confetti -->
+  <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
+
+  <div class="app-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="clinic-logo">
+          <div class="pulse-cross">✚</div>
+          <div class="logo-text">
+            <span class="logo-title">NOVA HOSPITAL</span>
+            <span class="logo-subtitle">COMMUNITY OS v2.0</span>
+          </div>
+        </div>
+        <div class="status-badge">
+          <span class="live-dot"></span>
+          <span class="live-text">ONLINE</span>
+        </div>
+      </div>
+
+      <!-- Scrollable Slide Navigation Menu -->
+      <div class="sidebar-menu-scrollable" style="height: calc(100vh - 120px); overflow-y: auto;">
+        <nav class="sidebar-nav">
+          <div class="nav-group"><span class="nav-group-title">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</span><ul>
+<li class="slide-item active" data-slide="slide-1"><span class="nav-num">01</span> <span class="nav-txt">Hoạt động 1: Mở khóa chiến dịch</span></li>
+<li class="slide-item" data-slide="slide-2"><span class="nav-num">02</span> <span class="nav-txt">Chuẩn bị & Hướng dẫn phản xạ</span></li>
+<li class="slide-item" data-slide="slide-3"><span class="nav-num">03</span> <span class="nav-txt">Câu hỏi phản xạ 1</span></li>
+<li class="slide-item" data-slide="slide-4"><span class="nav-num">04</span> <span class="nav-txt">Câu hỏi phản xạ 2</span></li>
+<li class="slide-item" data-slide="slide-5"><span class="nav-num">05</span> <span class="nav-txt">Câu hỏi phản xạ 3</span></li>
+<li class="slide-item" data-slide="slide-6"><span class="nav-num">06</span> <span class="nav-txt">Câu hỏi phản xạ 4</span></li>
+<li class="slide-item" data-slide="slide-7"><span class="nav-num">07</span> <span class="nav-txt">Câu hỏi phản xạ 5</span></li>
+<li class="slide-item" data-slide="slide-8"><span class="nav-num">08</span> <span class="nav-txt">Câu hỏi phản xạ 6</span></li>
+<li class="slide-item" data-slide="slide-9"><span class="nav-num">09</span> <span class="nav-txt">Câu hỏi phản xạ 7</span></li>
+<li class="slide-item" data-slide="slide-10"><span class="nav-num">10</span> <span class="nav-txt">Câu hỏi phản xạ 8</span></li>
+<li class="slide-item" data-slide="slide-11"><span class="nav-num">11</span> <span class="nav-txt">Mở khóa chiến dịch thành công!</span></li>
+</ul></div>
+<div class="nav-group"><span class="nav-group-title">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</span><ul>
+<li class="slide-item" data-slide="slide-12"><span class="nav-num">12</span> <span class="nav-txt">Hoạt động 2: Hậu quả bỏ bê</span></li>
+<li class="slide-item" data-slide="slide-13"><span class="nav-num">13</span> <span class="nav-txt">Giám định 3 hồ sơ vệ sinh sai</span></li>
+<li class="slide-item" data-slide="slide-14"><span class="nav-num">14</span> <span class="nav-txt">Bóc tách từ khóa vệ sinh sai</span></li>
+<li class="slide-item" data-slide="slide-15"><span class="nav-num">15</span> <span class="nav-txt">Trò chơi: Đấu nối nguy cơ y khoa</span></li>
+<li class="slide-item" data-slide="slide-16"><span class="nav-num">16</span> <span class="nav-txt">Kết luận: Cẩm nang y khoa chuẩn</span></li>
+</ul></div>
+<div class="nav-group"><span class="nav-group-title">🛠️ HOẠT ĐỘNG 3: TỜ RƠI</span><ul>
+<li class="slide-item" data-slide="slide-17"><span class="nav-num">17</span> <span class="nav-txt">Hoạt động 3: Xưởng in tờ rơi</span></li>
+<li class="slide-item" data-slide="slide-18"><span class="nav-num">18</span> <span class="nav-txt">Nhiệm vụ thiết kế & trang trí</span></li>
+<li class="slide-item" data-slide="slide-19"><span class="nav-num">19</span> <span class="nav-txt">Thực hiện thiết kế & Mẫu tờ rơi</span></li>
+<li class="slide-item" data-slide="slide-20"><span class="nav-num">20</span> <span class="nav-txt">Tiêu chí đánh giá chất lượng</span></li>
+</ul></div>
+<div class="nav-group"><span class="nav-group-title">📝 HOẠT ĐỘNG 4: TỔNG KẾT</span><ul>
+<li class="slide-item" data-slide="slide-21"><span class="nav-num">21</span> <span class="nav-txt">Hoạt động 4: Hội chẩn tổng kết</span></li>
+<li class="slide-item" data-slide="slide-22"><span class="nav-num">22</span> <span class="nav-txt">Nhật ký câu hỏi 1</span></li>
+<li class="slide-item" data-slide="slide-23"><span class="nav-num">23</span> <span class="nav-txt">Nhật ký câu hỏi 2</span></li>
+<li class="slide-item" data-slide="slide-24"><span class="nav-num">24</span> <span class="nav-txt">Nhật ký câu hỏi 3</span></li>
+<li class="slide-item" data-slide="slide-25"><span class="nav-num">25</span> <span class="nav-txt">Tuyên thệ Doctor Commitment</span></li>
+</ul></div>
+
+        </nav>
+      </div>
+      
+      <!-- Back to Portal button -->
+      <div style="padding: 10px 15px; border-top: 1px solid var(--glass-border);">
+        <a href="index.html" class="btn btn-surface btn-block btn-click" style="display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 11px; font-weight: 800; color: var(--text-muted);">🏠 CỔNG ĐIỀU HÀNH</a>
+      </div>
+    </aside>
+
+    <!-- ===== MAIN DISPLAY AREA ===== -->
+    <main class="main-content" style="height: 100vh; overflow-y: hidden;">
+      
+      <!-- Clinical Header Bar -->
+      <header class="clinical-header" style="height: 70px;">
+        <div class="header-left" style="display: flex; align-items: center; gap: 15px;">
+          <button class="control-btn" id="sidebar-toggle" title="Thu gọn / Mở rộng Sidebar" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 16px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth);">☰</button>
+          <div class="live-indicator">
+            <div class="live-dot" style="background: #0891B2;"></div>
+            <span style="font-family: var(--font-heading); font-weight: 900; font-size: 11px; color: #64748B; letter-spacing: 1px;">NOVA OS v2.0</span>
+          </div>
+          <h1 id="display-header-topic" class="header-topic">HỘI CHẨN Y KHOA: BÁC SĨ CỘNG ĐỒNG</h1>
+        </div>
+        <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
+          <!-- ECG Pulse Wave Chime -->
+          <svg class="ecg-svg" viewBox="0 0 220 36" width="140" height="24">
+            <path class="ecg-path" d="M0 18 L35 18 L45 8 L50 28 L55 18 L85 18 L95 18 L100 4 L106 32 L111 14 L116 18 L150 18 L160 8 L165 28 L170 18 L220 18" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" style="stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: ecg 3s linear infinite;"/>
+          </svg>
+          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;">📺 TOÀN MÀN HÌNH</button>
+          <button class="control-btn" id="teacher-guide-toggle" title="Xem Hướng dẫn Giáo viên" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;">📖 GIÁO ÁN GV</button>
+          <div class="realtime-clock" id="system-time" style="font-family: monospace; font-size: 14px; font-weight: 700; color: var(--text-main); letter-spacing: 1px;">00:00:00</div>
+        </div>
+      </header>
+
+      <!-- SLIDES VIEWPORT -->
+      <div class="slides-viewport" style="background-image: url('image_589641.png') !important; background-size: cover; background-position: center; padding: 1.5rem; display: flex; align-items: center; justify-content: center; height: calc(100vh - 70px); overflow-y: auto;">
+
+        <!-- Slide 1: Tên hoạt động 1 & Thử thách Ổ khóa -->
+        <section id="slide-1" class="slide active">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: MỞ KHÓA CHIẾN DỊCH</div>
+              <h1 class="main-title">HOẠT ĐỘNG 1: MỞ KHÓA CHIẾN DỊCH</h1>
+              <h2 class="sub-title">Thử thách: Trò chơi "Phản ứng nhanh"</h2>
+              
+              <!-- Locked Padlock SVG -->
+              <div class="lock-container" id="lock-container-el" style="margin: 15px auto; width: 140px; height: 160px; position: relative;">
+                <svg viewBox="0 0 100 120" width="110" height="132">
+                  <path class="lock-shackle" d="M25 45 V30 A25 25 0 0 1 75 30 V45" fill="none" stroke="#F59E0B" stroke-width="10" stroke-linecap="round" />
+                  <rect x="15" y="45" width="70" height="55" rx="10" fill="#F59E0B" stroke="#B45309" stroke-width="3"/>
+                  <circle cx="50" cy="70" r="6" fill="#1E293B"/>
+                  <path d="M47 75 L53 75 L55 90 L45 90 Z" fill="#1E293B"/>
+                </svg>
+              </div>
+
+              <div class="content-text" style="max-width: 800px; margin: 0 auto 15px auto; font-size: 18pt !important; font-weight: 800; color: var(--text-muted);">
+                Hoàn thành 8 câu hỏi phản xạ để mở khóa chiến dịch sức khỏe học đường!
+              </div>
+              
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(2)">🩺 XEM QUY CHẾ BẺ KHÓA</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 2: Chuẩn bị & Hướng dẫn phản xạ 30 giây -->
+        <section id="slide-2" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 30px 40px !important;">
+              <h1 class="main-title">QUY CHẾ PHẢN ỨNG NHANH</h1>
+              <h2 class="sub-title" style="color: var(--amber) !important; margin-bottom: 1.5rem !important;">Hướng dẫn bẻ khóa dành cho bác sĩ</h2>
+              
+              <div class="content-text" style="max-width: 850px; text-align: left; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 15px; font-size: 18pt !important; font-weight: 700;">
+                <div style="background: rgba(8, 145, 178, 0.05); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border);">
+                  • Màn hình sẽ hiển thị lần lượt <strong>8 câu hỏi</strong> thói quen vệ sinh tuổi dậy thì.
+                </div>
+                <div style="background: rgba(245, 158, 11, 0.05); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border); color: var(--amber);">
+                  • Mỗi câu hỏi có đúng <strong>30 giây</strong> đếm ngược chạy tự động.
+                </div>
+                <div style="background: rgba(16, 185, 129, 0.05); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border);">
+                  • Cả lớp suy nghĩ nhanh và đồng loạt giơ thẻ phản xạ màu:
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;🟢 <strong>Thẻ Xanh:</strong> Đúng / Khoa học, sạch thơm.
+                  <br>&nbsp;&nbsp;&nbsp;&nbsp;🔴 <strong>Thẻ Đỏ:</strong> Sai / Nguy cơ mầm bệnh.
+                </div>
+              </div>
+
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(3)">BẮT ĐẦU THỬ THÁCH 1 ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+        <!-- Slide 3: Câu hỏi 1 -->
+        <section id="slide-3" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 1 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 1</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Dùng tay cạy, nặn mụn trứng cá ngay khi mới nhú."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-3" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-3">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-3">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-3" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(4)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 4: Câu hỏi 2 -->
+        <section id="slide-4" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 2 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 2</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Rửa mặt đúng 2 lần/ngày bằng sữa rửa mặt dịu nhẹ."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-4" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-4">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-4">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-4" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--mint); font-weight: 900;">🟢 KHOA HỌC / ĐÚNG</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(5)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 5: Câu hỏi 3 -->
+        <section id="slide-5" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 3 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 3</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Xịt nước hoa đè lên nách áo đẫm mồ hôi để át mùi hôi cơ thể."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-5" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-5">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-5">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-5" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(6)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 6: Câu hỏi 4 -->
+        <section id="slide-6" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 4 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 4</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Thay quần lót và tất chân hằng ngày sau khi tắm sạch."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-6" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-6">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-6">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-6" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--mint); font-weight: 900;">🟢 KHOA HỌC / ĐÚNG</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(7)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 7: Câu hỏi 5 -->
+        <section id="slide-7" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 5 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 5</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Đi giày thể thao bít kín không cần đi tất cho mát."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-7" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-7">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-7">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-7" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(8)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 8: Câu hỏi 6 -->
+        <section id="slide-8" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 6 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 6</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Chỉ tắm bằng nước lã cho nhanh, không cần sữa tắm."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-8" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-8">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-8">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-8" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(9)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 9: Câu hỏi 7 -->
+        <section id="slide-9" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 7 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 7</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Mặc lại áo khoác đồng phục bẩn cả tuần không giặt."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-9" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-9">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-9">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-9" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(10)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 10: Câu hỏi 8 -->
+        <section id="slide-10" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🚀 HOẠT ĐỘNG 1: CÂU HỎI 8 / 8</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">CÂU HỎI PHẢN XẠ 8</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Dùng xà phòng bánh giặt đồ để rửa sạch dầu trên mặt."
+              </div>
+
+              <!-- 30S COUNTDOWN TIMER -->
+              <div class="reflex-timer-box" style="margin-bottom: 25px; padding: 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); max-width: 320px; margin: 0 auto 20px auto;">
+                <div class="reflex-timer-display" id="reflex-timer-10" style="font-family: monospace; font-size: 36px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">00:30</div>
+                <div style="display: flex; gap: 8px; justify-content: center; margin-top: 10px;">
+                  <button class="btn btn-sm btn-cyan btn-click" id="btn-reflex-start-10">▶ BẮT ĐẦU 30S</button>
+                  <button class="btn btn-sm btn-surface btn-click" id="btn-reflex-reveal-10">👁️ ĐÁP ÁN</button>
+                </div>
+              </div>
+
+              <!-- Answer Slot (Hidden until timer ends or revealed) -->
+              <div class="reflex-answer-panel" id="reflex-answer-10" style="visibility: hidden; font-size: 22pt; font-weight: 900; padding: 12px 24px; border-radius: 8px; background: rgba(8,145,178,0.05); border: 2.5px dashed var(--glass-border); width: fit-content; margin: 0 auto 10px auto; transition: all 0.3s ease;">
+                Đáp án: <span style="color: var(--coral); font-weight: 900;">🔴 CÓ HẠI / SAI</span>
+              </div>
+
+              <div style="margin-top: 15px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(11)">CÂU HỎI TIẾP THEO ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- Slide 11: Ổ khóa mở - Nhận nhiệm vụ chiến dịch -->
+        <section id="slide-11" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">🔓 MỞ KHÓA THÀNH CÔNG</div>
+              <h1 class="main-title" style="color: var(--mint) !important;">CHIẾN DỊCH ĐÃ MỞ KHÓA THÀNH CÔNG!</h1>
+              
+              <!-- Unlocked Padlock SVG -->
+              <div class="lock-container" style="margin: 15px auto; width: 140px; height: 160px; position: relative;">
+                <svg viewBox="0 0 100 120" width="110" height="132">
+                  <path d="M25 35 V20 A25 25 0 0 1 75 20 V35" fill="none" stroke="#10B981" stroke-width="10" stroke-linecap="round" style="transform: translateY(-10px) rotate(-15deg); transform-origin: 25px 35px;"/>
+                  <rect x="15" y="45" width="70" height="55" rx="10" fill="#10B981" stroke="#047857" stroke-width="3"/>
+                  <circle cx="50" cy="70" r="6" fill="#1E293B"/>
+                  <path d="M47 75 L53 75 L55 90 L45 90 Z" fill="#1E293B"/>
+                </svg>
+              </div>
+
+              <div class="content-text" style="max-width: 800px; margin: 0 auto 20px auto; font-size: 18pt !important; font-weight: 800; color: var(--text-main);">
+                NHẬN NHIỆM VỤ: Bác sĩ cộng đồng tuyên truyền giữ gìn vệ sinh cơ thể tuổi dậy thì!
+              </div>
+              
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(12)">🩺 TIẾN VÀO HOẠT ĐỘNG 2</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 12: Hoạt động 2: Hậu quả của việc bỏ bê vệ sinh -->
+        <section id="slide-12" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ BỎ BÊ CƠ THỂ</div>
+              <h1 class="main-title">HOẠT ĐỘNG 2: HẬU QUẢ CỦA VIỆC BỎ BÊ VỆ SINH</h1>
+              <h2 class="sub-title">Khảo sát thực trạng - Phân tích nguy cơ - Kết luận cộng đồng</h2>
+              <div class="content-text" style="max-width: 900px; margin: 0 auto 30px auto; line-height: 1.8;">
+                Để xây dựng các nội dung truyền thông chuẩn xác, kíp trực y khoa cần khảo sát thực tế các hồ sơ sai sót phổ biến của học sinh, bóc tách nguyên nhân sinh học và chốt cẩm nang khoa học.
+              </div>
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(13)">GIÁM ĐỊNH 3 HỒ SƠ ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 13: Giám định 3 hồ sơ vệ sinh sai -->
+        <section id="slide-13" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1280px; padding: 25px 35px !important;">
+              <h1 class="main-title">GIÁM ĐỊNH 3 HỒ SƠ VỆ SINH SAI</h1>
+              <h2 class="sub-title" style="color: var(--coral) !important; margin-bottom: 1.5rem !important;">Các bệnh án nặc danh ghi nhận sai sót học đường</h2>
+              
+              <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; text-align: left;">
+                <div style="background: rgba(239,68,68,0.03); border: 2px solid var(--glass-border); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                  <div style="font-size: 28px; margin-bottom: 8px;">📦</div>
+                  <h3 style="color: var(--cyan); font-family: var(--font-heading); font-size: 15pt; font-weight: 900; margin-bottom: 10px;">HỒ SƠ 1</h3>
+                  <p style="font-size: 13.5pt; color: var(--text-main); font-weight: 700; line-height: 1.6; margin: 0;">"Rửa mặt bằng xà phòng giặt đồ cho sạch bã dầu bám, tự cạy nặn mụn bọc bằng móng tay sắc để mụn xẹp nhanh."</p>
+                </div>
+
+                <div style="background: rgba(239,68,68,0.03); border: 2px solid var(--glass-border); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                  <div style="font-size: 28px; margin-bottom: 8px;">📦</div>
+                  <h3 style="color: var(--amber); font-family: var(--font-heading); font-size: 15pt; font-weight: 900; margin-bottom: 10px;">HỒ SƠ 2</h3>
+                  <p style="font-size: 13.5pt; color: var(--text-main); font-weight: 700; line-height: 1.6; margin: 0;">"Tắm rửa qua loa bằng nước lã không dùng sữa tắm xà bông, mặc lại quần áo đẫm mồ hôi chua sau khi đá bóng."</p>
+                </div>
+
+                <div style="background: rgba(239,68,68,0.03); border: 2px solid var(--glass-border); padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                  <div style="font-size: 28px; margin-bottom: 8px;">📦</div>
+                  <h3 style="color: var(--coral); font-family: var(--font-heading); font-size: 15pt; font-weight: 900; margin-bottom: 10px;">HỒ SƠ 3</h3>
+                  <p style="font-size: 13.5pt; color: var(--text-main); font-weight: 700; line-height: 1.6; margin: 0;">"Thích đi giày thể thao bít kín không cần đi tất cho mát, lười thay đồ lót và mặc liên tiếp 2 ngày một lần."</p>
+                </div>
+              </div>
+
+              <div style="margin-top: 30px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(14)">BÓC TÁCH TỪ KHÓA SAI ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 14: Bóc tách từ khóa vệ sinh sai -->
+        <section id="slide-14" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1280px; padding: 20px 30px !important;">
+              <h1 class="main-title" style="font-size: 38pt !important; margin-bottom: 0.5rem !important;">BÓC TÁCH TỪ KHÓA VỆ SINH SAI</h1>
+              <div class="content-text" style="color: var(--text-muted); font-size: 14pt; margin-bottom: 15px; font-weight: 700;">Hội đồng bác sĩ tiến hành rà soát. Click trực tiếp vào từ khóa để khoanh đỏ hành vi sai cách:</div>
+              
+              <div class="audit-container" style="height: 440px;">
+                <!-- Left Tabs for Switching Records -->
+                <div class="audit-tabs" style="gap: 8px;">
+                  <div class="audit-tab-btn active btn-click" data-case="face" style="padding: 14px !important;">
+                    <div class="audit-tab-title" style="font-size: 15pt !important;">Hồ sơ 1</div>
+                    <div class="audit-tab-status">Chưa kiểm định</div>
+                  </div>
+                  <div class="audit-tab-btn btn-click" data-case="odor" style="padding: 14px !important;">
+                    <div class="audit-tab-title" style="font-size: 15pt !important;">Hồ sơ 2</div>
+                    <div class="audit-tab-status">Chưa kiểm định</div>
+                  </div>
+                  <div class="audit-tab-btn btn-click" data-case="sensitive" style="padding: 14px !important;">
+                    <div class="audit-tab-title" style="font-size: 15pt !important;">Hồ sơ 3</div>
+                    <div class="audit-tab-status">Chưa kiểm định</div>
+                  </div>
+                </div>
+
+                <!-- Right Board displaying EMR sheet -->
+                <div class="audit-board" style="padding: 20px !important;">
+                  <!-- Case Face -->
+                  <div class="audit-letter" id="audit-sheet-face" style="font-size: 17pt !important; height: 300px;">
+                    Bệnh án da liễu học đường ghi nhận:
+                    Bệnh nhân dậy thì nổi mụn nhiều dầu thừa. Thói quen nguy hại là thường xuyên dùng <span class="audit-hotspot" id="h1-1">xà phòng bánh giặt đồ để rửa mặt</span> vì nghĩ là sạch bã nhờn nhanh. Khi mụn viêm bọc sưng lên, bệnh nhân tự ý dùng tay <span class="audit-hotspot" id="h1-2">cạy nặn mụn</span> gây chảy máu tổn thương da sâu.
+                  </div>
+
+                  <!-- Case Odor -->
+                  <div class="audit-letter" id="audit-sheet-odor" style="display: none; font-size: 17pt !important; height: 300px;">
+                    Hồ sơ mùi cơ thể dậy thì apocrine:
+                    Học sinh vận động mạnh tiết mồ hôi nhiều. Sai lầm phổ biến là chỉ <span class="audit-hotspot" id="h2-1">tắm bằng nước lã</span> vì lười dùng xà bông tẩy rửa. Sau khi tắm xong, học sinh lại lấy áo bẩn và tiếp tục <span class="audit-hotspot" id="h2-2">mặc lại quần áo bẩn</span> đẫm mồ hôi cũ tạo mùi chua bám dính cơ thể.
+                  </div>
+
+                  <!-- Case Sensitive -->
+                  <div class="audit-letter" id="audit-sheet-sensitive" style="display: none; font-size: 17pt !important; height: 300px;">
+                    Báo cáo mầm bệnh vùng nhạy cảm:
+                    Học sinh nam nữ dậy thì ngứa ngáy dữ dội. Ghi nhận thói quen có hại là thường xuyên <span class="audit-hotspot" id="h3-1">không đi tất</span> khi xỏ giày thể thao kín. Kèm theo là lười thay quần lót sạch, thường xuyên mặc <span class="audit-hotspot" id="h3-2">thay đồ lót 2 ngày một lần</span>.
+                  </div>
+
+                  <div class="audit-summary-bar">
+                    <div class="audit-count" style="font-size: 15pt !important;">
+                      Tiến độ chặng: <span id="audit-count-face">0/2</span> mầm bệnh
+                    </div>
+                    <span style="font-size: 12pt; color: var(--text-muted); font-weight: 800; letter-spacing: 0.5px;">Click trực tiếp vào từ khóa sai để khoanh đỏ lâm sàng</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center;">
+                <button class="btn btn-purple btn-lg btn-click" style="font-weight: 800;" onclick="revealAuditAnswers()">🩺 HIỆN VÒNG TRÒN ĐÁP ÁN</button>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(15)">CHƠI ĐẤU NỐI ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 15: Trò chơi Đấu nối nguy cơ y khoa -->
+        <section id="slide-15" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1280px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1.5px;">⚠️ HOẠT ĐỘNG 2: PHÂN TÍCH NGUY CƠ</div>
+              <h1 class="main-title" style="font-size: 36pt !important; margin-bottom: 0.5rem !important;">GAME: ĐẤU NỐI NGUY CƠ Y KHOA</h1>
+              <div class="content-text" style="color: var(--text-muted); font-size: 14pt; margin-bottom: 20px; font-weight: 700;">Click chọn một thói quen sai ở bên trái, sau đó click chọn hậu quả tương ứng ở bên phải:</div>
+
+              <div class="match-game-container">
+                <!-- Left Column: Habits -->
+                <div class="match-column" id="match-left-col">
+                  <div class="match-item btn-click" data-match="1" id="habit-A">
+                    <span class="match-badge">A</span>
+                    <span class="match-text">Nặn mụn bằng tay bẩn</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="2" id="habit-B">
+                    <span class="match-badge">B</span>
+                    <span class="match-text">Chỉ tắm bằng nước lã</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="3" id="habit-C">
+                    <span class="match-badge">C</span>
+                    <span class="match-text">Đi giày bít kín không đi tất</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="4" id="habit-D">
+                    <span class="match-badge">D</span>
+                    <span class="match-text">Thay đồ lót 2 ngày một lần</span>
+                  </div>
+                </div>
+
+                <!-- Right Column: Consequences -->
+                <div class="match-column" id="match-right-col">
+                  <div class="match-item btn-click" data-match="3" id="effect-3">
+                    <span class="match-badge"></span>
+                    <span class="match-text">Tuyến mồ hôi chân hoạt động kẽ ẩm tạo nấm chân</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="1" id="effect-1">
+                    <span class="match-badge"></span>
+                    <span class="match-text">Nhiễm trùng viêm nang lông da, tạo sẹo lõm rỗ</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="4" id="effect-4">
+                    <span class="match-badge"></span>
+                    <span class="match-text">Cặn bã vi khuẩn tích tụ lâu gây viêm vùng nhạy cảm</span>
+                  </div>
+                  <div class="match-item btn-click" data-match="2" id="effect-2">
+                    <span class="match-badge"></span>
+                    <span class="match-text">Không hòa tan chất béo apocrine nách, gây mùi chua</span>
+                  </div>
+                </div>
+              </div>
+
+              <div style="margin-top: 25px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(16)">KẾT LUẬN CỘNG ĐỒNG ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 16: Kết luận cộng đồng (Cẩm nang y khoa chuẩn) -->
+        <section id="slide-16" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 30px 40px !important;">
+              <h1 class="main-title">KẾT LUẬN CỘNG ĐỒNG: CẨM NANG Y KHOA CHUẨN</h1>
+              <h2 class="sub-title" style="color: var(--mint) !important; margin-bottom: 1.5rem !important;">Các đúc kết hành vi vệ sinh khoa học tuổi dậy thì</h2>
+              
+              <div class="content-text" style="max-width: 850px; text-align: left; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 20px; font-size: 16pt !important; font-weight: 700;">
+                <div style="display: flex; gap: 15px; align-items: flex-start; border-bottom: 1px dashed var(--glass-border); padding-bottom: 15px;">
+                  <span style="font-size: 28px; flex-shrink: 0;">🟢</span>
+                  <div>
+                    <strong style="color: var(--mint); font-size: 18pt;">Vệ sinh đúng cách:</strong>
+                    <div style="color: var(--text-muted); margin-top: 5px;">Rửa mặt bằng sữa rửa mặt dịu nhẹ thích hợp (2 lần/ngày) để tránh tắc bã nhờn. Thực hiện quy trình tắm rửa sạch cơ thể 6 bước với sữa tắm chuyên dụng.</div>
+                  </div>
+                </div>
+
+                <div style="display: flex; gap: 15px; align-items: flex-start;">
+                  <span style="font-size: 28px; flex-shrink: 0;">⚠️</span>
+                  <div>
+                    <strong style="color: var(--amber); font-size: 18pt;">Các lưu ý quan trọng:</strong>
+                    <div style="color: var(--text-muted); margin-top: 5px;">Luôn thay tất chân sạch và đồ lót hằng ngày sau khi tắm khô ráo. Tuyệt đối không tự ý sờ chạm nặn cạy mụn trên mặt để bảo vệ hàng rào biểu bì da.</div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(17)">BẮT ĐẦU HOẠT ĐỘNG 3 ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 17: Tên hoạt động 3 & Hạng mục chuẩn bị -->
+        <section id="slide-17" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">🛠️ HOẠT ĐỘNG 3: TỜ RƠI TUYÊN TRUYỀN</div>
+              <h1 class="main-title">HOẠT ĐỘNG 3: XƯỞNG IN TỜ RƠI TUYÊN TRUYỀN</h1>
+              <h2 class="sub-title">Phần 1: Thiết kế chiến dịch sức khỏe học đường</h2>
+              
+              <div class="content-text" style="max-width: 850px; text-align: left; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 15px; font-size: 16pt !important; font-weight: 700;">
+                <div style="background: rgba(8, 145, 178, 0.05); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border);">
+                  👥 <strong>Nhân sự kíp trực:</strong> Chia lớp học thành các <strong>Nhóm 4 học sinh</strong> phối hợp tác chiến.
+                </div>
+                <div style="background: rgba(139, 92, 246, 0.05); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border);">
+                  🛠️ <strong>Học liệu tác nghiệp:</strong> Chuẩn bị sẵn Giấy bìa, bút dạ màu, kéo cắt, hồ dán khô, thước kẻ và bút chì.
+                </div>
+              </div>
+
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(18)">XEM NHIỆM VỤ CHI TIẾT ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 18: Hướng dẫn thiết kế tờ rơi mục tiêu -->
+        <section id="slide-18" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 30px 40px !important;">
+              <h1 class="main-title">NHIỆM VỤ THIẾT KẾ & TRANG TRÍ TỜ RƠI</h1>
+              <h2 class="sub-title" style="color: var(--amber) !important; margin-bottom: 1.5rem !important;">Yêu cầu chi tiết sản phẩm đầu ra</h2>
+              
+              <div class="content-text" style="max-width: 850px; text-align: left; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 15px; font-size: 16pt !important; font-weight: 700;">
+                <div style="border-left: 5px solid var(--cyan); padding-left: 15px;">
+                  📝 <strong>Nội dung cốt lõi:</strong> Thiết kế tờ rơi tuyên truyền quy trình tắm rửa đúng cách và các lưu ý giữ cơ thể tuổi dậy thì sạch sẽ, thơm tho.
+                </div>
+                <div style="border-left: 5px solid var(--mint); padding-left: 15px;">
+                  🎨 <strong>Hình thức thiết kế:</strong> Trang trí bắt mắt, bố cục cột thông tin rõ ràng, chữ viết to rõ, scannable dễ đọc.
+                </div>
+                <div style="border-left: 5px solid var(--coral); padding-left: 15px;">
+                  ⏱️ <strong>Thời gian hành động:</strong> Toàn kíp trực có đúng <strong>20 phút</strong> thực hành.
+                </div>
+              </div>
+
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(19)">XEM TỜ RƠI MẪU ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 19: Thực hiện thiết kế & Mẫu tờ rơi -->
+        <section id="slide-19" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="width: 90%; height: 90%; max-width: 1400px; display: flex; flex-direction: column; justify-content: space-between; padding: 15px 30px !important; box-sizing: border-box; overflow: hidden;">
+              <h1 class="main-title" style="font-size: 26pt !important; margin: 0 0 5px 0 !important; flex-shrink: 0;">XƯỞNG THIẾT KẾ & THAM KHẢO MẪU</h1>
+              
+              <div style="display: flex; gap: 20px; justify-content: center; align-items: center; margin-bottom: 10px; flex-shrink: 0;">
+                <!-- 20M Countdown Timer -->
+                <div class="timer-box" style="padding: 6px 15px; border-radius: 12px; background: rgba(0,240,255,0.03); border: 1.5px solid var(--glass-border); display: flex; align-items: center; gap: 15px;">
+                  <span style="font-size: 13px; font-weight: 800; color: var(--text-muted);">⏱️ ĐỒNG HỒ:</span>
+                  <div class="slide-timer-display" id="slide-timer-19" style="font-family: monospace; font-size: 28px; font-weight: 900; color: var(--cyan); letter-spacing: 1px;">20:00</div>
+                  <button class="btn btn-cyan btn-sm btn-click" id="btn-timer-start-19" style="font-weight: 800; font-size: 11px;">▶ CHẠY 20M</button>
+                </div>
+                
+                <!-- Cheerful Music Button -->
+                <button class="btn btn-purple btn-click" id="btn-music-toggle" style="font-weight: 800; font-size: 13px; padding: 6px 15px;">🎵 BẬT NHẠC NỀN</button>
+              </div>
+ 
+              <!-- Template Models Showcase (2D and 3D Side-by-Side) -->
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: stretch; width: 100%; max-width: 1200px; margin: 0 auto; flex-grow: 1; min-height: 0; overflow: hidden;">
+                <!-- Left: 2D Model -->
+                <div class="flex-center-col" style="background: var(--bg-surface); padding: 10px; border-radius: 12px; border: 1.5px solid var(--glass-border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center; min-height: 0; overflow: hidden; height: 100%;">
+                  <h3 style="font-family: var(--font-heading); font-size: 13pt; font-weight: 900; color: var(--cyan); margin: 0 0 5px 0; text-transform: uppercase; flex-shrink: 0;">Mẫu 2D Truyền Thống</h3>
+                  <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; min-height: 0; width: 100%; overflow: hidden;">
+                    <img src="flyer_2d_sample.png" alt="Mẫu Tờ Rơi 2D" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid var(--glass-border);">
+                  </div>
+                  <span style="font-size: 11px; color: var(--text-muted); margin-top: 5px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; flex-shrink: 0;">Bố cục mẫu 2D vẽ tay minh họa</span>
+                </div>
+ 
+                <!-- Right: 3D Model -->
+                <div class="flex-center-col" style="background: var(--bg-surface); padding: 10px; border-radius: 12px; border: 1.5px solid var(--glass-border); box-shadow: 0 4px 15px rgba(0,0,0,0.05); display: flex; flex-direction: column; justify-content: center; min-height: 0; overflow: hidden; height: 100%;">
+                  <h3 style="font-family: var(--font-heading); font-size: 13pt; font-weight: 900; color: var(--amber); margin: 0 0 5px 0; text-transform: uppercase; flex-shrink: 0;">Mẫu 3D Tương Tác</h3>
+                  <div style="flex-grow: 1; display: flex; align-items: center; justify-content: center; min-height: 0; width: 100%; overflow: hidden;">
+                    <img src="image_211707.jpg" alt="Mẫu Tờ Rơi 3D" style="max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border: 1px solid var(--glass-border);">
+                  </div>
+                  <span style="font-size: 11px; color: var(--text-muted); margin-top: 5px; text-transform: uppercase; font-weight: 800; letter-spacing: 0.5px; flex-shrink: 0;">Bố cục mẫu 3D tương tác</span>
+                </div>
+              </div>
+ 
+              <div style="margin-top: 10px; flex-shrink: 0;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900; padding: 10px 24px;" onclick="navigateToSlide(20)">XEM TIÊU CHÍ ĐÁNH GIÁ ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 20: Tiêu chí đánh giá sản phẩm tờ rơi -->
+        <section id="slide-20" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 30px 40px !important;">
+              <h1 class="main-title">THANG ĐO CHẤT LƯỢNG TỜ RƠI TRUYỀN THÔNG</h1>
+              <h2 class="sub-title" style="color: var(--amber) !important; margin-bottom: 1.5rem !important;">Hội đồng y khoa tiến hành chấm điểm chéo các nhóm</h2>
+              
+              <div class="commitment-checklist" style="max-width: 900px; margin: 0 auto 30px auto; display: flex; flex-direction: column; gap: 15px; text-align: left;">
+                <label class="commitment-item btn-click" style="background: rgba(16, 185, 129, 0.03); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border); display: flex; align-items: flex-start; gap: 12px; font-size: 16pt !important;">
+                  <input type="checkbox" id="eval-crit-1" style="width: 22px; height: 22px; margin-top: 4px; accent-color: var(--mint);">
+                  <span><strong>Nội dung đầy đủ:</strong> Tờ rơi hiển thị đủ thông tin về quy trình tắm 6 bước khoa học và 4 lưu ý làm sạch đồ lót, tất chân đã kiểm chứng.</span>
+                </label>
+                <label class="commitment-item btn-click" style="background: rgba(8, 145, 178, 0.03); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border); display: flex; align-items: flex-start; gap: 12px; font-size: 16pt !important;">
+                  <input type="checkbox" id="eval-crit-2" style="width: 22px; height: 22px; margin-top: 4px; accent-color: var(--cyan);">
+                  <span><strong>Hình thức trình bày:</strong> Chữ viết lớn, sạch đẹp, dễ đọc, bố cục cân đối và scannable.</span>
+                </label>
+                <label class="commitment-item btn-click" style="background: rgba(139, 92, 246, 0.03); padding: 15px; border-radius: 8px; border: 1.5px solid var(--glass-border); display: flex; align-items: flex-start; gap: 12px; font-size: 16pt !important;">
+                  <input type="checkbox" id="eval-crit-3" style="width: 22px; height: 22px; margin-top: 4px; accent-color: var(--purple);">
+                  <span><strong>Tính trực quan:</strong> Trang trí hình ảnh hoặc biểu tượng icon minh họa sinh động, dễ thương.</span>
+                </label>
+              </div>
+
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(21)">BẤT ĐẦU TỔNG KẾT BÀI HỌC ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 21: Tên hoạt động 4 - Nhật ký bác sĩ cộng đồng -->
+        <section id="slide-21" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">📝 HOẠT ĐỘNG 4: HỘI CHẨN TỔNG KẾT LÂM SÀNG</div>
+              <h1 class="main-title">HỘI CHẨN TỔNG KẾT LÂM SÀNG</h1>
+              <h2 class="sub-title">Phần 1: Nhật ký bác sĩ cộng đồng (Khảo thí kiến thức cốt lõi)</h2>
+              <div class="content-text" style="max-width: 850px; margin: 0 auto 30px auto; line-height: 1.8;">
+                Chúng ta đã hoàn thành xưởng chế tác tờ rơi truyền thông học đường. Bây giờ, kíp trực tiến hành làm phiếu chẩn đoán lâm sàng nhanh để ghi chép lại cẩm nang y khoa cốt lõi.
+              </div>
+              <div>
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(22)">TRẢ LỜI CÂU HỎI NHẬT KÝ ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        
+        <!-- Slide 22: Nhật ký câu 1 -->
+        <section id="slide-22" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">📝 HOẠT ĐỘNG 4: NHẬT KÝ CÂU 1 / 3</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">NHẬT KÝ LÂM SÀNG - CÂU 1</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Em hãy nhắc lại các hậu quả lớn nếu giữ thói quen vệ sinh cơ thể sai cách?"
+              </div>
+
+              <!-- Button Reveal Answer -->
+              <div style="margin-bottom: 25px;">
+                <button class="btn btn-purple btn-lg btn-click" id="btn-journal-reveal-22" onclick="revealJournalAnswer('22')">🩺 HIỂN THỊ ĐÁP ÁN CHUẨN</button>
+              </div>
+
+              <!-- Answer Panel (display: none by default) -->
+              <div class="journal-answer-panel" id="journal-answer-22" style="display: none; text-align: left; background: rgba(16, 185, 129, 0.05); border: 2.5px solid var(--mint); border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; transition: all 0.3s ease;">
+                <strong style="color: var(--mint); font-size: 15pt; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">✓ ĐÁP ÁN CHUẨN Y KHOA:</strong>
+                <div style="font-size: 15pt; color: var(--text-main); line-height: 1.6; font-weight: 700;">
+                  Mụn bọc nhiễm trùng, sẹo rỗ lâu năm, cơ thể bốc mùi hôi chua, nấm ngứa kẽ chân và sự tự ti, lo lắng bị bạn bè xa lánh ở trường học.
+                </div>
+              </div>
+
+              <div style="margin-top: 25px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(23)">TIẾP TỤC ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 23: Nhật ký câu 2 -->
+        <section id="slide-23" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">📝 HOẠT ĐỘNG 4: NHẬT KÝ CÂU 2 / 3</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">NHẬT KÝ LÂM SÀNG - CÂU 2</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Em hãy nhắc lại các bước tắm rửa đúng cách theo chuẩn khoa học?"
+              </div>
+
+              <!-- Button Reveal Answer -->
+              <div style="margin-bottom: 25px;">
+                <button class="btn btn-purple btn-lg btn-click" id="btn-journal-reveal-23" onclick="revealJournalAnswer('23')">🩺 HIỂN THỊ ĐÁP ÁN CHUẨN</button>
+              </div>
+
+              <!-- Answer Panel (display: none by default) -->
+              <div class="journal-answer-panel" id="journal-answer-23" style="display: none; text-align: left; background: rgba(16, 185, 129, 0.05); border: 2.5px solid var(--mint); border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; transition: all 0.3s ease;">
+                <strong style="color: var(--mint); font-size: 15pt; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">✓ ĐÁP ÁN CHUẨN Y KHOA:</strong>
+                <div style="font-size: 15pt; color: var(--text-main); line-height: 1.6; font-weight: 700;">
+                  Quy trình tắm 6 bước: Làm ướt toàn thân ➔ Tạo bọt xà phòng ➔ Kỳ cọ kỹ các vùng nếp gấp (nách, tai, cổ, bẹn) ➔ Xả sạch hoàn toàn với nước ➔ Lau khô bằng khăn sạch ➔ Thay đồ lót mới.
+                </div>
+              </div>
+
+              <div style="margin-top: 25px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(24)">TIẾP TỤC ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Slide 24: Nhật ký câu 3 -->
+        <section id="slide-24" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1200px; padding: 25px 35px !important;">
+              <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; display: inline-block; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1.5px;">📝 HOẠT ĐỘNG 4: NHẬT KÝ CÂU 3 / 3</div>
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 15px;">NHẬT KÝ LÂM SÀNG - CÂU 3</h1>
+              
+              <div class="content-text" style="color: var(--text-main); font-size: 20pt !important; font-weight: 800; min-height: 80px; margin-bottom: 20px; line-height: 1.5;">
+                "Hãy nhắc lại các lưu ý quan trọng để giữ cơ thể luôn thơm tho, sạch sẽ?"
+              </div>
+
+              <!-- Button Reveal Answer -->
+              <div style="margin-bottom: 25px;">
+                <button class="btn btn-purple btn-lg btn-click" id="btn-journal-reveal-24" onclick="revealJournalAnswer('24')">🩺 HIỂN THỊ ĐÁP ÁN CHUẨN</button>
+              </div>
+
+              <!-- Answer Panel (display: none by default) -->
+              <div class="journal-answer-panel" id="journal-answer-24" style="display: none; text-align: left; background: rgba(16, 185, 129, 0.05); border: 2.5px solid var(--mint); border-radius: 12px; padding: 20px; max-width: 800px; margin: 0 auto; transition: all 0.3s ease;">
+                <strong style="color: var(--mint); font-size: 15pt; display: block; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;">✓ ĐÁP ÁN CHUẨN Y KHOA:</strong>
+                <div style="font-size: 15pt; color: var(--text-main); line-height: 1.6; font-weight: 700;">
+                  Luôn thay quần lót và tất chân hằng ngày; không mặc lại quần áo bẩn; rửa mặt đúng tần suất 2 lần/ngày bằng SRM dịu nhẹ; tuyệt đối không tự cạy nặn mụn.
+                </div>
+              </div>
+
+              <div style="margin-top: 25px;">
+                <button class="btn btn-cyan btn-lg btn-click" style="font-weight: 900;" onclick="navigateToSlide(25)">TIẾP TỤC ▶</button>
+              </div>
+            </div>
+          </div>
+        </section>
+        
+
+        <!-- Slide 26: Tư duy phòng bệnh - Cam kết hành động thực tế -->
+        <section id="slide-25" class="slide">
+          <div class="slide-layout flex-center-col text-center">
+            <div class="slide-frame" style="max-width: 1100px; padding: 25px 35px !important;">
+              <h1 class="main-title" style="font-size: 34pt !important; margin-bottom: 0.5rem !important;">TƯ DUY PHÒNG BỆNH: CAM KẾT HÀNH ĐỘNG MỖI NGÀY</h1>
+              <div class="content-text" style="color: var(--text-muted); font-size: 14pt; margin-bottom: 20px; font-weight: 700;">Tích chọn cam kết hành động thực tế và ký tên họ đầy đủ để nhận chứng nhận kíp trực y khoa:</div>
+              
+              <!-- Commitment Cert Widget -->
+              <div class="commitment-container">
+                <!-- Left Form -->
+                <div class="commitment-form">
+                  <h3 style="font-family: var(--font-heading); font-size: 16pt; font-weight: 900; color: var(--cyan); margin-bottom: 15px; text-transform: uppercase;">Cam kết thực hiện lâm sàng tuần này:</h3>
+                  <div class="commitment-checklist">
+                    <label class="commitment-item btn-click">
+                      <input type="checkbox" id="commit-1">
+                      <span>Rửa mặt nhẹ nhàng bằng sữa rửa mặt dịu nhẹ thích hợp (2 lần/ngày).</span>
+                    </label>
+                    <label class="commitment-item btn-click">
+                      <input type="checkbox" id="commit-2">
+                      <span>Tắm rửa sạch sẽ cơ thể mỗi ngày đúng quy trình tắm khoa học 6 bước.</span>
+                    </label>
+                    <label class="commitment-item btn-click">
+                      <input type="checkbox" id="commit-3">
+                      <span>Thay tất chân sạch và quần đồ lót mới mỗi ngày sau khi đi học về.</span>
+                    </label>
+                    <label class="commitment-item btn-click">
+                      <input type="checkbox" id="commit-4">
+                      <span>Giặt giũ quần áo cũ hằng ngày, tuyệt đối không mặc lại áo khoác bẩn.</span>
+                    </label>
+                  </div>
+
+                  <div style="margin-top: 15px;">
+                    <label style="font-size: 12px; font-weight: 800; color: var(--text-muted); display: block; margin-bottom: 8px; text-transform: uppercase;">Chữ ký Bác sĩ (Nhập họ tên đầy đủ):</label>
+                    <input type="text" id="student-signature" class="signature-input" placeholder="NHẬP TÊN BÁC SĨ TẠI ĐÂY..." maxlength="25" style="color: var(--text-main); font-weight: 700;">
+                  </div>
+
+                  <div style="margin-top: 20px;">
+                    <button class="btn btn-cyan btn-block btn-click" id="btn-stamp-cert" style="font-weight: 900; padding: 14px;" disabled>🩺 KÝ TÊN & ĐỒNG THUẬN CAM KẾT</button>
+                  </div>
+                </div>
+
+                <!-- Right Cert Frame -->
+                <div class="cert-panel" id="cert-panel-card">
+                  <div class="cert-hospital-logo">✚</div>
+                  <h3 class="cert-title">CHỨNG NHẬN BÁC SĨ CHUYÊN KHOA</h3>
+                  <div class="cert-subtitle">Nova Community Health Certificate</div>
+                  
+                  <div class="cert-text">
+                    Hội đồng Đào tạo Lâm sàng và Y học Cộng đồng Nova Hospital chứng nhận:
+                  </div>
+
+                  <!-- Recipient Name Slot -->
+                  <div class="cert-recipient" id="cert-recipient-name">
+                    ........................................
+                  </div>
+
+                  <div class="cert-text">
+                    Đã hoàn thành xuất sắc khóa huấn luyện thực địa **Bác Sĩ Cộng Đồng**, vạch trần lầm tưởng y học và cam kết bảo vệ sức khỏe học đường.
+                  </div>
+
+                  <!-- Wet Ink Stamp Seal -->
+                  <div class="cert-stamp" id="cert-stamp-seal" style="position: absolute; border: 4px double var(--mint); border-radius: 50%; width: 90px; height: 90px; display: flex; align-items: center; justify-content: center; transform: rotate(-15deg); opacity: 0; transition: all 0.3s ease; pointer-events: none;">
+                    <span class="cert-stamp-text" style="font-size: 9px; font-weight: 900; color: var(--mint); text-align: center; text-transform: uppercase; line-height: 1.1;">COMMITTED<br>NOVA CLINIC</span>
+                  </div>
+
+                  <!-- Signatures -->
+                  <div style="width: 100%; display: flex; justify-content: space-between; margin-top: 10px; padding: 0 10px;">
+                    <div style="text-align: center;">
+                      <span style="font-size: 10px; color: var(--text-muted); display: block;">Viện Trưởng Nova Clinic</span>
+                      <strong class="cert-signature" style="font-family: 'Courier New', Courier, monospace; color: var(--mint); font-size: 15px;">Dr. Nova</strong>
+                    </div>
+                    <div style="text-align: center;">
+                      <span style="font-size: 10px; color: var(--text-muted); display: block;">Chữ ký Bác sĩ</span>
+                      <strong class="cert-signature" id="cert-signature-output" style="font-family: 'Montserrat', sans-serif; font-weight: 900; color: var(--text-main); font-size: 15px;">....................</strong>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="content-text" style="font-size: 13.5pt !important; color: var(--text-muted); font-style: italic; margin-top: 20px;">
+                * Hãy dọn dẹp sạch sẽ chỗ ngồi và rác giấy xung quanh kíp trực của nhóm trước khi ra về nhé!
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <!-- RIGHT SIDEBAR (TEACHER GUIDE) -->
+    <aside class="teacher-sidebar">
+      <div class="teacher-sidebar-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <h3 style="margin: 0; font-family: var(--font-heading); font-size: 12px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px;">📋 HƯỚNG DẪN GIẢNG DẠY</h3>
+          <span style="font-size: 10px; color: #0891B2; font-weight: 800; background: rgba(8,145,178,0.1); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">GIÁO VIÊN</span>
+        </div>
+        <button class="control-btn" id="teacher-guide-close" title="Ẩn Hướng dẫn" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-muted); font-size: 14px; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); line-height: 1;">✕</button>
+      </div>
+      <div class="teacher-sidebar-content" style="height: calc(100vh - 60px); overflow-y: auto; padding: 15px;">
+        
+        <div id="guide-slide-1" class="guide-panel active">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Tên hoạt động 1 & Thử thách Ổ khóa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Dẫn dắt kịch tính: 'Chào mừng các kíp trực! Chiến dịch truyền thông lớn của chúng ta đang bị khóa. Toàn lớp cần vượt qua 8 câu hỏi phản xạ để bẻ khóa!'</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Chuẩn bị sẵn bộ thẻ màu xanh/đỏ trên bàn để bắt đầu chơi.</p>
+          </div>
+        </div>
+        <div id="guide-slide-2" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Chuẩn bị & Hướng dẫn phản xạ</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Giải thích nhanh luật chơi, nhấn mạnh yếu tố đếm ngược tự động 30 giây để học sinh tập trung cao độ.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đặt tay hờ lên cặp thẻ màu xanh/đỏ, mắt hướng lên màn hình chính.</p>
+          </div>
+        </div>
+        <div id="guide-slide-3" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 1: Nặn mụn bằng tay</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV quan sát diện rộng lớp học khi đồng hồ về 0 để kiểm tra xem có bạn nào giơ sai thẻ không.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và đồng loạt giơ cao khi đồng hồ 30 giây kết thúc.</p>
+          </div>
+        </div>
+        <div id="guide-slide-4" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 2: Rửa mặt bằng SRM</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV nhắc nhở HS giơ thẻ dứt khoát không nhìn bài bạn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-5" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 3: Xịt nước hoa đè mồ hôi</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV quan sát tỉ lệ chọn xanh/đỏ của lớp học.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-6" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 4: Thay tất & đồ lót</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV nhấn mạnh tầm quan trọng của thói quen vệ sinh hằng ngày.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-7" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 5: Đi giày không tất</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV quan sát sự phản xạ nhanh nhạy của các nhóm.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-8" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 6: Tắm bằng nước lã</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV kiểm chứng nhận thức của học sinh về độ sạch của nước lã.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-9" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 7: Mặc lại áo khoác bẩn</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. GV nhắc nhở về vi khuẩn bám trên đồ vải.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-10" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Câu hỏi phản xạ 8: Dùng xà phòng giặt để rửa mặt</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động chạy chữ và thời gian. Đây là câu cuối cùng để mở khóa hòm thư.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đọc câu hỏi, chọn thẻ và giơ cao khi hết giờ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-11" class="guide-panel">
+          <div class="guide-panel-group">🚀 HOẠT ĐỘNG 1: MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Bẻ khóa thành công & Nhận nhiệm vụ</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Chúc mừng lớp học đã bẻ khóa thành công, dõng dạc tuyên bố sứ mệnh chính của tiết học này là xuất bản tờ rơi.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Học sinh vỗ tay ăn mừng và sẵn sàng nhận nhiệm vụ lớn.</p>
+          </div>
+        </div>
+        <div id="guide-slide-12" class="guide-panel">
+          <div class="guide-panel-group">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</div>
+          <h3 class="guide-panel-title">Tên hoạt động 2 & Dẫn dắt</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Dẫn dắt: 'Để truyền thông hiệu quả, chúng ta phải thấu suốt thực trạng và những nguy cơ đáng sợ nếu bỏ bê cơ thể.'</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Lắng nghe, chuyển trạng thái từ chơi game sang nghiên cứu sâu.</p>
+          </div>
+        </div>
+        <div id="guide-slide-13" class="guide-panel">
+          <div class="guide-panel-group">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</div>
+          <h3 class="guide-panel-title">Giám định 3 hồ sơ vệ sinh sai</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Yêu cầu các nhóm đọc kỹ 3 trường hợp thực tế thường gặp trên màn hình.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Thảo luận cặp đôi hoặc nhóm nhỏ, tìm ra các chi tiết sai lầm của nhân vật trong hồ sơ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-14" class="guide-panel">
+          <div class="guide-panel-group">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</div>
+          <h3 class="guide-panel-title">Bóc tách từ khóa vệ sinh sai</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Gọi học sinh phát biểu chỉ ra từ khóa vệ sinh sai. Sau đó bấm hiện vòng tròn đỏ đối chiếu tương tác.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Phát biểu gọi tên chính xác các hành vi bẩn để khoanh tròn đỏ trên EMR.</p>
+          </div>
+        </div>
+        <div id="guide-slide-15" class="guide-panel">
+          <div class="guide-panel-group">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</div>
+          <h3 class="guide-panel-title">Trò chơi: Đấu nối nguy cơ y khoa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hướng dẫn luật chơi: Click chọn một Thói quen sai ở cột trái và chọn Hậu quả y khoa tương ứng ở cột phải.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Tương tác nối thói quen sai với hậu quả y học chuẩn xác.</p>
+          </div>
+        </div>
+        <div id="guide-slide-16" class="guide-panel">
+          <div class="guide-panel-group">⚠️ HOẠT ĐỘNG 2: HẬU QUẢ</div>
+          <h3 class="guide-panel-title">Kết luận: Cẩm nang y khoa chuẩn</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Chốt lại nội dung kiến thức chuẩn, nhấn mạnh đây chính là nội dung 'xương sống' học sinh phải đưa vào tờ rơi.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Ghi nhận và ghi chép nhanh các từ khóa cốt lõi làm chất liệu thiết kế.</p>
+          </div>
+        </div>
+        <div id="guide-slide-17" class="guide-panel">
+          <div class="guide-panel-group">🛠️ HOẠT ĐỘNG 3: TỜ RƠI</div>
+          <h3 class="guide-panel-title">Tên hoạt động 3 & Hạng mục chuẩn bị</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hướng dẫn học sinh nhanh chóng ổn định đội hình nhóm 4 bạn và kiểm tra đầy đủ các học liệu thiết kế đã chuẩn bị sẵn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Tập hợp nhóm 4, bày biện Giấy bìa, kéo, thước kẻ và bút dạ màu lên bàn.</p>
+          </div>
+        </div>
+        <div id="guide-slide-18" class="guide-panel">
+          <div class="guide-panel-group">🛠️ HOẠT ĐỘNG 3: TỜ RƠI</div>
+          <h3 class="guide-panel-title">Nhiệm vụ thiết kế & trang trí</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Giao đề bài chi tiết. Nhắc nhở học sinh cần phân chia công việc trong nhóm: bạn vẽ hình, bạn viết chữ để kịp tiến độ.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Lắng nghe kỹ yêu cầu và phân vai thực hiện.</p>
+          </div>
+        </div>
+        <div id="guide-slide-19" class="guide-panel">
+          <div class="guide-panel-group">🛠️ HOẠT ĐỘNG 3: TỜ RƠI</div>
+          <h3 class="guide-panel-title">Thực hiện thiết kế & Mẫu tờ rơi</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Kích hoạt đồng hồ 20 phút và nhạc nền vui vẻ. GV đi quanh lớp hỗ trợ và hướng dẫn học sinh xem mẫu 2D & 3D để thiết kế.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Cả nhóm 4 người cùng thực hiện thiết kế, vẽ hình minh họa và điền thông tin lên tờ rơi A4.</p>
+          </div>
+        </div>
+        <div id="guide-slide-20" class="guide-panel">
+          <div class="guide-panel-group">🛠️ HOẠT ĐỘNG 3: TỜ RƠI</div>
+          <h3 class="guide-panel-title">Tiêu chí đánh giá chất lượng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hết giờ 20 phút, GV yêu cầu học sinh dừng bút, học sinh tự đánh giá chéo sản phẩm bằng checklist trên màn hình.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Các nhóm tiến hành tự đánh giá và đi tích điểm chéo các nhóm bạn.</p>
+          </div>
+        </div>
+        <div id="guide-slide-21" class="guide-panel">
+          <div class="guide-panel-group">📝 HOẠT ĐỘNG 4: TỔNG KẾT</div>
+          <h3 class="guide-panel-title">Hội chẩn tổng kết lâm sàng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Dẫn dắt: 'Để hoàn tất ca trực hôm nay, các bác sĩ hãy ghi lại nhật ký lâm sàng thông qua việc trả lời 3 câu hỏi nhanh sau đây'.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Tập trung tinh thần chuẩn bị tổng kết bài học.</p>
+          </div>
+        </div>
+        <div id="guide-slide-22" class="guide-panel">
+          <div class="guide-panel-group">📝 HOẠT ĐỘNG 4: TỔNG KẾT</div>
+          <h3 class="guide-panel-title">Nhật ký câu hỏi 1: Hậu quả bỏ bê</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Gọi 1 học sinh trả lời nhanh câu hỏi 1. Sau đó bấm vào nút [ĐÁP ÁN] để cả lớp đối chiếu.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Đứng tại chỗ trả lời dựa trên kiến thức nguy cơ y học.</p>
+          </div>
+        </div>
+        <div id="guide-slide-23" class="guide-panel">
+          <div class="guide-panel-group">📝 HOẠT ĐỘNG 4: TỔNG KẾT</div>
+          <h3 class="guide-panel-title">Nhật ký câu hỏi 2: 6 bước tắm đúng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Yêu cầu một học sinh khác tái hiện lại quy trình tắm. Bấm hiện đáp án để chuẩn hóa thao tác.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Trả lời nhanh, ghi nhớ thứ tự các bước tắm khoa học.</p>
+          </div>
+        </div>
+        <div id="guide-slide-24" class="guide-panel">
+          <div class="guide-panel-group">📝 HOẠT ĐỘNG 4: TỔNG KẾT</div>
+          <h3 class="guide-panel-title">Nhật ký câu hỏi 3: Lưu ý sạch thơm</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Điều phối học sinh trả lời câu hỏi chốt hạ cuối cùng của phần Nhật ký. Bấm hiện đáp án.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Phát biểu đầy đủ các lưu ý định lượng thực tế để giữ gìn hương thơm cơ thể.</p>
+          </div>
+        </div>
+        <div id="guide-slide-25" class="guide-panel">
+          <div class="guide-panel-group">📝 HOẠT ĐỘNG 4: TỔNG KẾT</div>
+          <h3 class="guide-panel-title">Lời thề Doctor Commitment</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU HOẠT ĐỘNG:</h4>
+            <p>Phát triển năng lực nhận thức và tương tác chuẩn y khoa học đường.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Yêu cầu học sinh mở phiếu cá nhân, tự tay tích chọn vào danh sách việc cần làm và ký tên cam kết. Bấm đóng mộc ảo ăn mừng tốt nghiệp.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👥 HÀNH ĐỘNG HỌC SINH:</h4>
+            <p>Ký tên cam kết, đóng dấu chứng nhận, nhận confetti ăn mừng và dọn dẹp sạch sẽ chỗ ngồi trước khi ra về.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="app_tiet2.js"></script>
+</body>
+</html>
