@@ -397,7 +397,7 @@ body.guide-open .slides-container {
 .slide-title {
   font-family: var(--font-accent);
   font-weight: 900;
-  font-size: 34pt; 
+  font-size: 34px; 
   color: #fff;
   line-height: 1.25;
 }
@@ -2229,7 +2229,7 @@ body.light-mode .meter-bar-track {
 }
 
 .final-title {
-  font-size: 34pt;
+  font-size: 34px;
   font-weight: 900;
   letter-spacing: 0.5px;
   color: #fff;
@@ -2799,7 +2799,7 @@ body.light-mode .glass-panel {
    LARGER TYPOGRAPHY & LAYOUT SCALING (USER REQUEST)
    ========================================================================== */
 body {
-  font-size: 22pt !important; /* Scale base font size */
+  font-size: 21px !important; /* Scale base font size */
 }
 
 .slide-panel {
@@ -2807,20 +2807,20 @@ body {
 }
 
 .slide-title {
-  font-size: 46pt !important; /* Larger slide title */
+  font-size: 42px !important; /* Larger slide title */
 }
 
 .breadcrumb {
-  font-size: 18pt !important;
+  font-size: 15px !important;
   letter-spacing: 2px !important;
 }
 
 .prep-card h3 {
-  font-size: 28pt !important;
+  font-size: 24px !important;
 }
 
 .prep-card p {
-  font-size: 22pt !important;
+  font-size: 21px !important;
 }
 
 .item-desc, .record-text, .g-text-desc, .description, .bullet-list li, .numbered-list-styled li, .bullet-list-styled li {
@@ -2849,11 +2849,11 @@ body {
 }
 
 .quiz-question-text {
-  font-size: 28pt !important;
+  font-size: 26px !important;
 }
 
 .quiz-explanation-text {
-  font-size: 22pt !important;
+  font-size: 21px !important;
 }
 
 .game-instruction {
@@ -3091,7 +3091,7 @@ body {
 
 /* Extreme Typography Scaling */
 body {
-  font-size: 22pt !important;
+  font-size: 23px !important;
 }
 
 .slide-panel {
@@ -3099,7 +3099,7 @@ body {
 }
 
 .slide-title {
-  font-size: 46pt !important;
+  font-size: 46px !important;
   font-weight: 900 !important;
 }
 
@@ -3110,50 +3110,50 @@ body {
 }
 
 .prep-card h3 {
-  font-size: 28pt !important;
+  font-size: 26px !important;
 }
 
 .prep-card p {
-  font-size: 22pt !important;
+  font-size: 23px !important;
 }
 
 .item-desc, .record-text, .g-text-desc, .description, .bullet-list li, .numbered-list-styled li, .bullet-list-styled li {
-  font-size: 22pt !important;
+  font-size: 22px !important;
   line-height: 1.6 !important;
 }
 
 .medical-table th {
-  font-size: 22pt !important;
+  font-size: 22px !important;
   padding: 14px 18px !important;
 }
 
 .medical-table td {
-  font-size: 22pt !important;
+  font-size: 21px !important;
   padding: 14px 18px !important;
   line-height: 1.5 !important;
 }
 
 .checklist-items label, .checkbox-container, .checkbox-container span {
-  font-size: 22pt !important;
+  font-size: 21px !important;
 }
 
 .quiz-question-text {
-  font-size: 30pt !important;
+  font-size: 28px !important;
   line-height: 1.5 !important;
 }
 
 .quiz-explanation-text {
-  font-size: 22pt !important;
+  font-size: 23px !important;
 }
 
 .game-instruction {
-  font-size: 22pt !important;
+  font-size: 21px !important;
 }
 
 .ready-stamp-badge, #approved-stamp-badge {
   width: 140px !important;
   height: 140px !important;
-  font-size: 18pt !important;
+  font-size: 13px !important;
   border-width: 4px !important;
 }
 
@@ -3549,7 +3549,7 @@ body, body.dark-mode {
   }
   
   .certificate-badge-card .cert-title-huge {
-    font-size: 28pt !important;
+    font-size: 26px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
   }
@@ -3561,7 +3561,7 @@ body, body.dark-mode {
   }
   
   .certificate-badge-card .cert-name {
-    font-size: 28pt !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
   }
@@ -3856,7 +3856,7 @@ body, body.dark-mode, body.light-mode {
   }
   
   .certificate-badge-card .cert-title-huge {
-    font-size: 28pt !important;
+    font-size: 26px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
   }
@@ -3868,7 +3868,7 @@ body, body.dark-mode, body.light-mode {
   }
   
   .certificate-badge-card .cert-name {
-    font-size: 28pt !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
   }
@@ -3947,19 +3947,19 @@ body, body.dark-mode, body.light-mode {
   }
   
   .certificate-badge-card .cert-title-huge {
-    font-size: 28pt !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
   }
   
   .certificate-badge-card .cert-subtitle-teal {
-    font-size: 18pt !important;
+    font-size: 15px !important;
     font-weight: 800 !important;
     color: #319795 !important;
   }
   
   .certificate-badge-card .cert-name {
-    font-size: 28pt !important;
+    font-size: 24px !important;
     font-weight: 900 !important;
     color: #1A365D !important;
     border-bottom: 2px dashed #cbd5e1 !important;
@@ -4021,7 +4021,7 @@ body, body.dark-mode, body.light-mode {
   font-family: var(--font-accent) !important;
   font-weight: 900 !important;
   color: var(--accent-navy) !important;
-  font-size: 28pt !important;
+  font-size: 24px !important;
   letter-spacing: 1px !important;
   margin-bottom: 2px !important;
 }
@@ -4030,7 +4030,7 @@ body, body.dark-mode, body.light-mode {
   font-family: var(--font-accent) !important;
   font-weight: 800 !important;
   color: var(--accent-mint) !important;
-  font-size: 18pt !important;
+  font-size: 15px !important;
   letter-spacing: 0.5px !important;
   margin-bottom: 6px !important;
 }
@@ -4043,7 +4043,7 @@ body, body.dark-mode, body.light-mode {
   font-family: var(--font-accent) !important;
   font-weight: 900 !important;
   color: var(--accent-navy) !important;
-  font-size: 28pt !important;
+  font-size: 26px !important;
   border-bottom: 2px dashed #cbd5e1 !important;
   display: inline-block !important;
   padding-bottom: 2px !important;
@@ -4131,7 +4131,7 @@ body, body.dark-mode, body.light-mode {
 }
 
 .certificate-badge-card .cert-title-huge {
-  font-size: 28pt !important;
+  font-size: 24px !important;
   font-weight: 900 !important;
   color: var(--accent-navy) !important;
   margin-top: 5px !important;
@@ -4139,7 +4139,7 @@ body, body.dark-mode, body.light-mode {
 }
 
 .certificate-badge-card .cert-subtitle-teal {
-  font-size: 18pt !important;
+  font-size: 15px !important;
   font-weight: 800 !important;
   color: var(--accent-mint) !important;
   margin-bottom: 6px !important;
@@ -4161,7 +4161,7 @@ body, body.dark-mode, body.light-mode {
 }
 
 .certificate-badge-card .cert-name {
-  font-size: 28pt !important;
+  font-size: 26px !important;
   font-weight: 900 !important;
   color: var(--accent-navy) !important;
   border-bottom: 2px dashed #cbd5e1 !important;
@@ -4210,11 +4210,11 @@ body, body.dark-mode, body.light-mode {
   }
   
   .certificate-badge-card .cert-title-huge {
-    font-size: 28pt !important;
+    font-size: 24px !important;
   }
   
   .certificate-badge-card .cert-subtitle-teal {
-    font-size: 18pt !important;
+    font-size: 15px !important;
   }
   
   .certificate-badge-card .cert-small-text {
@@ -4222,7 +4222,7 @@ body, body.dark-mode, body.light-mode {
   }
   
   .certificate-badge-card .cert-name {
-    font-size: 28pt !important;
+    font-size: 26px !important;
   }
   
   .certificate-badge-card .cert-footer p {
@@ -4333,7 +4333,7 @@ body, body.dark-mode, body.light-mode {
 }
 
 .custom-alert-message {
-  font-size: 18pt !important;
+  font-size: 15px !important;
   color: #2d3748 !important;
   line-height: 1.5 !important;
   margin-bottom: 20px !important;
@@ -4363,4 +4363,95 @@ body, body.dark-mode, body.light-mode {
   .custom-alert-modal {
     display: none !important;
   }
+}
+
+
+/* ==========================================================================
+   SLIDE CONTENT TYPOGRAPHY OVERRIDES (USER READABILITY REQUIREMENTS)
+   ========================================================================== */
+.slide-panel .slide-title,
+.slide-frame .slide-title {
+  font-size: 46pt !important;
+  font-weight: 900 !important;
+}
+
+.slide-panel .sub-title,
+.slide-frame .sub-title {
+  font-size: 30pt !important;
+  font-weight: 800 !important;
+}
+
+.slide-panel .item-desc,
+.slide-panel .record-text,
+.slide-panel .description,
+.slide-panel .bullet-list li,
+.slide-panel .numbered-list-styled li,
+.slide-panel .bullet-list-styled li,
+.slide-panel .quiz-explanation-text,
+.slide-panel .game-instruction,
+.slide-panel td,
+.slide-panel th,
+.slide-frame .item-desc,
+.slide-frame .record-text,
+.slide-frame .description,
+.slide-frame .bullet-list li,
+.slide-frame .numbered-list-styled li,
+.slide-frame .bullet-list-styled li {
+  font-size: 22pt !important;
+  line-height: 1.6 !important;
+}
+
+.slide-panel .quiz-question-text,
+.slide-frame .quiz-question-text {
+  font-size: 30pt !important;
+  line-height: 1.5 !important;
+}
+
+/* Slide internal buttons */
+.slide-panel .action-btn:not(#fullscreen-toggle):not(#teacher-guide-toggle) {
+  font-size: 20pt !important;
+  padding: 12px 28px !important;
+}
+
+/* ==========================================================================
+   PREPARATION & GUIDELINES SLIDES (USER SMALLER TITLE / LARGER CONTENT REQ)
+   ========================================================================== */
+.slide-panel.prep-slide .slide-title,
+.slide-panel.guide-slide .slide-title,
+.prep-slide .slide-title,
+.guide-slide .slide-title {
+  font-size: 34pt !important;
+}
+
+/* Make content cards in prep slides larger */
+.prep-slide .instructions-card p,
+.prep-slide .instructions-card li,
+.prep-slide .instructions-card div:not(.timer-widget):not(.timer-display):not(.timer-controls):not(.timer-icon),
+.prep-slide .prep-card p,
+.prep-slide .prep-card li,
+.prep-slide .prep-card h3,
+.prep-slide .info-card p,
+.prep-slide .info-card li,
+.prep-slide .glass-panel p,
+.prep-slide .glass-panel li,
+.guide-slide .instructions-card p,
+.guide-slide .instructions-card li,
+.guide-slide .instructions-card div:not(.timer-widget):not(.timer-display):not(.timer-controls):not(.timer-icon),
+.guide-slide .prep-card p,
+.guide-slide .prep-card li,
+.guide-slide .prep-card h3,
+.guide-slide .info-card p,
+.guide-slide .info-card li,
+.guide-slide .glass-panel p,
+.guide-slide .glass-panel li {
+  font-size: 24pt !important;
+  line-height: 1.6 !important;
+}
+
+.prep-slide .prep-card h3,
+.prep-slide .info-card h3,
+.guide-slide .prep-card h3 {
+  font-size: 28pt !important;
+  font-weight: 800 !important;
+  margin-bottom: 12px !important;
 }

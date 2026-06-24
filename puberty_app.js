@@ -924,9 +924,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Key navigation
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowRight') {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+      e.preventDefault();
       navigateToSlide(currentSlide + 1);
-    } else if (e.key === 'ArrowLeft') {
+    } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+      e.preventDefault();
       navigateToSlide(currentSlide - 1);
     }
   });

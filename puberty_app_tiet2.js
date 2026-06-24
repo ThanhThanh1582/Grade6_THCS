@@ -367,11 +367,11 @@ function navigateToSlide(slideNum) {
 
 // Global Keyboard Navigation
 window.addEventListener('keydown', (e) => {
-  if (e.target.tagName === 'TEXTAREA' || e.target.tagName === 'INPUT') return;
-  if (e.key === 'ArrowRight' || e.key === 'Space') {
+  if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+  if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
     e.preventDefault();
     navigateToSlide(AppState.currentSlide + 1);
-  } else if (e.key === 'ArrowLeft') {
+  } else if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
     e.preventDefault();
     navigateToSlide(AppState.currentSlide - 1);
   }

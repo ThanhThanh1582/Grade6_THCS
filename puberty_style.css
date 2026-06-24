@@ -4486,3 +4486,116 @@ body {
   border-radius: 20px;
   border: 1.5px solid var(--glass-border);
 }
+
+
+/* ==========================================================================
+   SLIDE CONTENT TYPOGRAPHY OVERRIDES (USER READABILITY REQUIREMENTS)
+   ========================================================================== */
+.slide .main-title,
+.slide-frame .main-title {
+  font-size: 46pt !important;
+  font-weight: 900 !important;
+}
+
+.slide .sub-title,
+.slide-frame .sub-title {
+  font-size: 30pt !important;
+  font-weight: 800 !important;
+}
+
+.slide .content-text,
+.slide-frame .content-text,
+.slide p,
+.slide li,
+.slide td,
+.slide th,
+.slide div.text-desc,
+.slide-frame p,
+.slide-frame li,
+.slide-frame td,
+.slide-frame th {
+  font-size: 22pt !important;
+  line-height: 1.6 !important;
+}
+
+/* Slide buttons size */
+.slide .btn:not(.timer-btn):not(.arrow-btn):not(#fullscreen-toggle):not(#teacher-guide-toggle),
+.slide-frame .btn:not(.timer-btn):not(.arrow-btn):not(#fullscreen-toggle):not(#teacher-guide-toggle) {
+  font-size: 20pt !important;
+  padding: 12px 28px !important;
+  border-radius: 12px !important;
+}
+
+/* ==========================================================================
+   PREPARATION & GUIDELINES SLIDES (USER SMALLER TITLE / LARGER CONTENT REQ)
+   ========================================================================== */
+.slide.prep-slide .main-title,
+.slide.guide-slide .main-title,
+.prep-slide .main-title,
+.guide-slide .main-title {
+  font-size: 34pt !important;
+}
+
+.slide.prep-slide .sub-title,
+.slide.guide-slide .sub-title,
+.prep-slide .sub-title,
+.guide-slide .sub-title {
+  font-size: 26pt !important;
+}
+
+/* Make preparation slide details much larger and clearer in content cards */
+.prep-slide .instructions-card p,
+.prep-slide .instructions-card li,
+.prep-slide .instructions-card div:not(.timer-widget):not(.timer-display):not(.timer-controls):not(.timer-icon),
+.prep-slide .prep-card p,
+.prep-slide .prep-card li,
+.prep-slide .info-card p,
+.prep-slide .info-card li,
+.prep-slide .glass-panel p,
+.prep-slide .glass-panel li,
+.guide-slide .instructions-card p,
+.guide-slide .instructions-card li,
+.guide-slide .instructions-card div:not(.timer-widget):not(.timer-display):not(.timer-controls):not(.timer-icon),
+.guide-slide .prep-card p,
+.guide-slide .prep-card li,
+.guide-slide .info-card p,
+.guide-slide .info-card li,
+.guide-slide .glass-panel p,
+.guide-slide .glass-panel li {
+  font-size: 24pt !important;
+  line-height: 1.6 !important;
+  color: #0F172A !important; /* solid dark slate for high contrast */
+}
+
+.prep-slide h3,
+.prep-slide .instructions-card h3,
+.prep-slide .prep-card h3,
+.prep-slide .info-card h3,
+.guide-slide h3,
+.guide-slide .instructions-card h3,
+.guide-slide .prep-card h3,
+.guide-slide .info-card h3 {
+  font-size: 28pt !important;
+  font-weight: 800 !important;
+  margin-bottom: 15px !important;
+}
+
+.prep-slide .btn,
+.guide-slide .btn {
+  font-size: 20pt !important;
+}
+
+/* Slide-header slide-title overrides for Tiet 3 */
+.slide .slide-header .slide-title,
+.slide-frame .slide-header .slide-title {
+  font-size: 46pt !important;
+  font-weight: 900 !important;
+  font-family: var(--font-heading) !important;
+  text-transform: uppercase !important;
+  color: var(--cyan) !important;
+}
+
+.prep-slide .slide-header .slide-title,
+.guide-slide .slide-header .slide-title {
+  font-size: 34pt !important;
+}
