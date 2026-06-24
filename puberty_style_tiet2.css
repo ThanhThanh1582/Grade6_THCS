@@ -1,4 +1,4 @@
-@import url('style.css');
+@import url('puberty_style.css');
 
 /* ==========================================================================
    TIẾT 2: BÁC SĨ CỘNG ĐỒNG - LIGHT CLINICAL CLINIC THEME
@@ -330,7 +330,7 @@ body {
 
 .audit-tab-title {
   font-family: var(--font-heading) !important;
-  font-size: 16pt !important;
+  font-size: 22pt !important;
   font-weight: 800 !important;
   color: #0F172A !important;
   margin-bottom: 6px;
@@ -454,7 +454,7 @@ body {
   padding: 12px 30px !important;
   border-radius: 30px !important;
   font-weight: 800 !important;
-  font-size: 16pt !important; /* Bigger tab labels */
+  font-size: 22pt !important; /* Bigger tab labels */
   cursor: pointer;
   transition: var(--transition-smooth);
 }
@@ -504,7 +504,7 @@ body {
 }
 
 .flow-node-content {
-  font-size: 15pt !important; /* Bold node text */
+  font-size: 22pt !important; /* Bold node text */
   font-weight: 800 !important;
   color: #0F172A !important;
   line-height: 1.5 !important;
@@ -623,7 +623,7 @@ body {
   padding: 10px 20px !important;
   border-radius: 8px !important;
   font-weight: 800 !important;
-  font-size: 16pt !important; /* Bold tab labels */
+  font-size: 22pt !important; /* Bold tab labels */
   cursor: pointer;
   transition: var(--transition-smooth);
 }
@@ -802,7 +802,7 @@ body {
 }
 
 .cert-subtitle {
-  font-size: 13pt !important;
+  font-size: 20pt !important;
   font-weight: 800 !important;
   color: var(--mint) !important;
   text-transform: uppercase;
@@ -811,7 +811,7 @@ body {
 }
 
 .cert-text {
-  font-size: 15pt !important; /* Bold details */
+  font-size: 22pt !important; /* Bold details */
   color: #64748B !important;
   font-weight: 700 !important;
   line-height: 1.6 !important;
@@ -820,7 +820,7 @@ body {
 
 .cert-recipient {
   font-family: 'Montserrat', sans-serif !important;
-  font-size: 26pt !important; /* Large, bold medical certificate recipient */
+  font-size: 32pt !important; /* Large, bold medical certificate recipient */
   font-weight: 900 !important;
   color: #0F172A !important;
   text-decoration: underline;
@@ -845,7 +845,7 @@ body {
 }
 
 .cert-signature {
-  font-size: 16pt !important; /* Large signature values */
+  font-size: 22pt !important; /* Large signature values */
   font-weight: 800 !important;
   color: #0F172A !important;
 }
@@ -927,7 +927,7 @@ body {
 }
 
 .guide-panel-group {
-  font-size: 11px;
+  font-size: 14pt !important;
   font-weight: 800;
   color: var(--cyan);
   text-transform: uppercase;
@@ -937,7 +937,7 @@ body {
 
 .guide-panel-title {
   font-family: var(--font-heading);
-  font-size: 18px;
+  font-size: 24pt !important;
   font-weight: 900;
   color: var(--text-main);
   margin: 0 0 15px 0;
@@ -954,7 +954,7 @@ body {
 
 .guide-panel-section h4 {
   margin: 0 0 6px 0;
-  font-size: 11px;
+  font-size: 14pt !important;
   font-weight: 900;
   color: var(--text-muted);
   letter-spacing: 0.5px;
@@ -962,7 +962,7 @@ body {
 
 .guide-panel-section p {
   margin: 0;
-  font-size: 13.5px;
+  font-size: 18pt !important;
   line-height: 1.6;
   color: var(--text-main);
   font-weight: 700;
@@ -1015,13 +1015,13 @@ body {
   color: #475569;
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 22px;
+  font-size: 26pt !important;
   flex-shrink: 0;
   transition: all 0.2s ease;
 }
 
 .match-text {
-  font-size: 26px;
+  font-size: 30pt !important;
   font-weight: 700;
   color: #1E293B;
   line-height: 1.4;
@@ -1107,7 +1107,7 @@ body {
 .active-stage-indicator {
   font-family: var(--font-heading);
   font-weight: 800;
-  font-size: 13px;
+  font-size: 18pt !important;
   letter-spacing: 0.5px;
   color: var(--text-main);
   background: rgba(255, 255, 255, 0.05);
