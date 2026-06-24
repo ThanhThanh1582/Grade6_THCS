@@ -1015,7 +1015,7 @@ body {
   color: #475569;
   font-family: var(--font-heading);
   font-weight: 900;
-  font-size: 26pt !important;
+  font-size: 32pt !important;
   flex-shrink: 0;
   transition: all 0.2s ease;
 }
