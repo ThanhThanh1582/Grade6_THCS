@@ -7,13 +7,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="puberty_style_tiet2.css">
 </head>
 <body>
   <!-- Canvas for Confetti -->
   <canvas id="confetti-canvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999;"></canvas>
 
-  <div class="app-container">
+  <div class="app-container sidebar-collapsed-right">
     
     <!-- LEFT SIDEBAR -->
     <aside class="sidebar">
@@ -82,21 +83,25 @@
       
       <!-- Clinical Header Bar -->
       <header class="clinical-header" style="height: 70px;">
-        <div class="header-left" style="display: flex; align-items: center; gap: 15px;">
+        <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+          <a href="puberty_portal.html" class="back-portal-btn" title="Quay lại Cổng Học Tập"><i class="fa-solid fa-house"></i></a>
           <button class="control-btn" id="sidebar-toggle" title="Thu gọn / Mở rộng Sidebar" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 16px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth);">☰</button>
           <div class="live-indicator">
             <div class="live-dot" style="background: #0891B2;"></div>
             <span style="font-family: var(--font-heading); font-weight: 900; font-size: 11px; color: #64748B; letter-spacing: 1px;">NOVA OS v2.0</span>
           </div>
-          <h1 id="display-header-topic" class="header-topic">HỘI CHẨN Y KHOA: BÁC SĨ CỘNG ĐỒNG</h1>
+          <div class="active-stage-indicator" id="current-stage-display" style="font-family: var(--font-heading); font-weight: 800; font-size: 13px; color: var(--text-main); background: rgba(255,255,255,0.05); padding: 6px 16px; border-radius: 20px; border: 1.5px solid var(--glass-border);">
+            TIẾT 2: BÁC SĨ CỘNG ĐỒNG
+          </div>
+          <h1 id="display-header-topic" class="header-topic" style="font-size: 14px; font-weight: 700; color: var(--text-muted);">HỘI CHẨN Y KHOA: BÁC SĨ CỘNG ĐỒNG</h1>
         </div>
         <div class="header-right" style="display: flex; align-items: center; gap: 20px;">
           <!-- ECG Pulse Wave Chime -->
           <svg class="ecg-svg" viewBox="0 0 220 36" width="140" height="24">
             <path class="ecg-path" d="M0 18 L35 18 L45 8 L50 28 L55 18 L85 18 L95 18 L100 4 L106 32 L111 14 L116 18 L150 18 L160 8 L165 28 L170 18 L220 18" fill="none" stroke="#0891B2" stroke-width="2.5" stroke-linecap="round" style="stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: ecg 3s linear infinite;"/>
           </svg>
-          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;">📺 TOÀN MÀN HÌNH</button>
-          <button class="control-btn" id="teacher-guide-toggle" title="Xem Hướng dẫn Giáo viên" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;">📖 GIÁO ÁN GV</button>
+          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-expand"></i> <span class="btn-lbl">Toàn màn hình</span></button>
+          <button class="control-btn" id="teacher-guide-toggle" title="Xem Hướng dẫn Giáo viên" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-main); font-size: 13px; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-chalkboard-user"></i> <span class="btn-lbl">Chỉ dẫn</span></button>
           <div class="realtime-clock" id="system-time" style="font-family: monospace; font-size: 14px; font-weight: 700; color: var(--text-main); letter-spacing: 1px;">00:00:00</div>
         </div>
       </header>
@@ -975,7 +980,7 @@
     </main>
 
     <!-- RIGHT SIDEBAR (TEACHER GUIDE) -->
-    <aside class="teacher-sidebar">
+    <aside class="teacher-sidebar" id="teacher-guide-sidebar">
       <div class="teacher-sidebar-header">
         <div style="display: flex; align-items: center; gap: 8px;">
           <h3 style="margin: 0; font-family: var(--font-heading); font-size: 12px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px;">📋 HƯỚNG DẪN GIẢNG DẠY</h3>

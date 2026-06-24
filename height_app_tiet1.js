@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const slideIndexDisplay = document.getElementById('slide-index-display');
   const slideStageDisplay = document.getElementById('slide-stage-display');
   const progressDotsContainer = document.getElementById('progress-dots-container');
-  const toggleFullscreenBtn = document.getElementById('toggle-fullscreen-btn');
-  const toggleGuideBtn = document.getElementById('toggle-guide-btn');
-  const closeGuideBtn = document.getElementById('close-guide-btn');
+  const toggleFullscreenBtn = document.getElementById('fullscreen-toggle');
+  const toggleGuideBtn = document.getElementById('teacher-guide-toggle');
+  const closeGuideBtn = document.getElementById('teacher-guide-close');
   const startBtn = document.getElementById('start-btn');
   const restartBtn = document.getElementById('restart-btn');
 

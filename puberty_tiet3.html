@@ -1,598 +1,1760 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đại Hội Tranh Tài Chuyên Khoa Da Liễu - Nova Hospital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg-main: #05020C;
-            --bg-nebula: #110A24;
-            --bg-panel: rgba(30, 41, 59, 0.7);
-            --electric-cyan: #00F0FF;
-            --cosmic-pink: #FF007A;
-            --neon-mint: #10B981;
-            --digital-coral: #F43F5E;
-            --nova-gold: #FFD700;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Be Vietnam Pro', sans-serif;
-            background-color: var(--bg-main);
-            color: #E2E8F0;
-            overflow-x: hidden;
-            background-image: radial-gradient(circle at 50% 20%, #4E148C 0%, var(--bg-main) 60%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        h1, h2, h3, .font-tech {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-        }
-
-        /* Top Navigation Header */
-        .header-terminal {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: rgba(17, 10, 36, 0.8);
-            border: 1px solid var(--electric-cyan);
-            border-radius: 12px;
-            padding: 15px 30px;
-            margin-bottom: 25px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-        }
-
-        .header-title h1 {
-            color: #FFF;
-            font-size: 24px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        .header-title span {
-            color: var(--electric-cyan);
-            font-size: 12px;
-            display: block;
-            margin-top: 4px;
-        }
-
-        /* Score & Timer HUD */
-        .hud-display {
-            display: flex;
-            gap: 20px;
-            align-items: center;
-        }
-
-        .timer-box {
-            background: rgba(244, 63, 94, 0.1);
-            border: 1px solid var(--digital-coral);
-            padding: 8px 20px;
-            border-radius: 8px;
-            color: var(--digital-coral);
-            font-size: 18px;
-            font-weight: bold;
-        }
-
-        .score-board {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid var(--neon-mint);
-            padding: 8px 20px;
-            border-radius: 8px;
-            color: var(--neon-mint);
-            font-size: 16px;
-        }
-
-        /* Main Workspace Grid */
-        .workspace-grid {
-            display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 25px;
-            height: calc(100vh - 120px);
-        }
-
-        /* Sidebar Sidebar List Cases */
-        .sidebar-cases {
-            background: var(--bg-panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 20px;
-            backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            overflow-y: auto;
-        }
-
-        .sidebar-cases h2 {
-            font-size: 16px;
-            color: var(--electric-cyan);
-            text-transform: uppercase;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 10px;
-            margin-bottom: 5px;
-        }
-
-        .case-tab {
-            background: rgba(15, 23, 42, 0.6);
-            border-left: 4px solid #475569;
-            padding: 15px;
-            border-radius: 0 8px 8px 0;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .case-tab:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateX(5px);
-        }
-
-        .case-tab.active {
-            background: rgba(0, 240, 255, 0.05);
-            border-left-color: var(--electric-cyan);
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
-        }
-
-        .case-tab h3 {
-            font-size: 15px;
-            color: #FFF;
-            margin-bottom: 4px;
-        }
-
-        .case-tab p {
-            font-size: 12px;
-            color: #94A3B8;
-        }
-
-        /* Center Dashboard Clinical View */
-        .clinical-dashboard {
-            background: var(--bg-panel);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(12px);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
-        }
-
-        .panel-badge {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            background: rgba(255, 0, 122, 0.1);
-            border: 1px solid var(--cosmic-pink);
-            color: var(--cosmic-pink);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-
-        .patient-info {
-            margin-bottom: 25px;
-        }
-
-        .patient-info h2 {
-            font-size: 28px;
-            color: #FFF;
-            margin-bottom: 5px;
-        }
-
-        .patient-info p {
-            color: var(--electric-cyan);
-            font-size: 14px;
-        }
-
-        /* Data Blocks */
-        .data-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-            margin-bottom: 25px;
-            flex-grow: 1;
-        }
-
-        .block-card {
-            background: rgba(15, 23, 42, 0.8);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 20px;
-            position: relative;
-        }
-
-        .block-card h4 {
-            font-size: 14px;
-            color: #94A3B8;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .block-card.symptom-card h4 { color: var(--digital-coral); }
-        .block-card.habit-card h4 { color: var(--nova-gold); }
-
-        .block-content {
-            font-size: 15px;
-            line-height: 1.6;
-            color: #E2E8F0;
-        }
-
-        /* Interaction Panel Prescription */
-        .prescription-box {
-            background: rgba(16, 185, 129, 0.03);
-            border: 1px dashed var(--neon-mint);
-            border-radius: 12px;
-            padding: 20px;
-            margin-top: 15px;
-        }
-
-        .prescription-box h4 {
-            color: var(--neon-mint);
-            margin-bottom: 8px;
-        }
-
-        .prescription-blur {
-            filter: blur(6px);
-            user-select: none;
-            pointer-events: none;
-            transition: all 0.5s ease;
-        }
-
-        .prescription-box.reveal .prescription-blur {
-            filter: blur(0);
-            user-select: auto;
-            pointer-events: auto;
-        }
-
-        /* Control Area Bottom Button */
-        .control-area {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 15px;
-        }
-
-        .btn-action {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: none;
-            transition: all 0.2s ease;
-            text-transform: uppercase;
-            font-size: 13px;
-        }
-
-        .btn-submit {
-            background: var(--electric-cyan);
-            color: #05020C;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-        }
-
-        .btn-submit:hover {
-            background: #FFF;
-            box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
-        }
-
-        .btn-reveal {
-            background: transparent;
-            border: 1px solid var(--neon-mint);
-            color: var(--neon-mint);
-        }
-
-        .btn-reveal:hover {
-            background: var(--neon-mint);
-            color: #FFF;
-        }
-
-        /* Interactive Score Buttons for Teacher */
-        .grading-panel {
-            display: flex;
-            gap: 10px;
-        }
-        .btn-grade {
-            padding: 6px 12px;
-            border-radius: 4px;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 12px;
-        }
-        .btn-plus { background: var(--neon-mint); color: white; }
-        .btn-minus { background: var(--digital-coral); color: white; }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #475569; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOVA HOSPITAL - TIẾT 3: CHIẾN DỊCH TUYÊN TRUYỀN</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="puberty_style.css">
+  
+  <style>
+    /* Premium layout styles for Tiết 3 slide deck */
+    body {
+      background-image: url('image_589641.png') !important;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      width: 100vw;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(7, 11, 19, 0.88) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .app-container {
+      position: relative;
+      z-index: 5;
+    }
+    
+    /* Design Guidelines slide typography specifications */
+    .slide-layout .main-title {
+      font-size: clamp(2.0rem, 4.5vw, 2.8rem) !important;
+      font-weight: 900;
+      text-transform: uppercase;
+      color: #FFFFFF !important;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+      line-height: 1.2;
+    }
+    .slide-layout .sub-title {
+      font-size: clamp(1.3rem, 2.5vw, 1.7rem) !important;
+      font-weight: 800;
+      color: var(--amber) !important;
+      margin-bottom: 20px;
+    }
+    .slide-layout .content-text, .slide-layout p, .slide-layout li {
+      font-size: clamp(1.1rem, 2vw, 1.35rem) !important;
+      line-height: 1.6;
+      font-weight: 600;
+      color: #E2E8F0;
+    }
+    
+    /* Interactive guessing visual block */
+    .mystery-visual {
+      position: relative;
+    }
+    .glow-icon i {
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% {
+        transform: scale(0.95);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+    
+    /* Blurred answer panel state management */
+    .answer-box.blurred .answer-text {
+      filter: blur(8px);
+      user-select: none;
+      pointer-events: none;
+    }
+    
+    /* Timer HUD Widget styling */
+    .timer-widget {
+      background: rgba(244, 63, 94, 0.08);
+      border: 1.5px solid var(--digital-coral);
+      padding: 15px 25px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+      color: var(--digital-coral);
+      font-family: monospace;
+      max-width: 100%;
+    }
+    .timer-display {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+    .timer-icon {
+      font-size: 24px;
+    }
+    .timer-controls {
+      display: flex;
+      gap: 8px;
+    }
+    .timer-btn {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--digital-coral);
+      color: var(--digital-coral);
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 13px;
+      transition: all 0.2s ease;
+    }
+    .timer-btn:hover {
+      background: var(--digital-coral);
+      color: #FFF;
+    }
+    .timer-btn.hidden {
+      display: none;
+    }
+    
+    /* CSS animation for stamp print */
+    @keyframes stampGrow {
+      0% {
+        transform: scale(3);
+        opacity: 0;
+      }
+      80% {
+        transform: scale(0.9);
+        opacity: 0.9;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+    
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+  </style>
 </head>
 <body>
+  <!-- Canvas for Confetti -->
+  <canvas id="confetti-canvas"></canvas>
 
-    <!-- Header Terminal HUD -->
-    <div class="header-terminal">
-        <div class="header-title">
-            <h1>Đại Hội Tranh Tài Chuyên Khoa Da Liễu</h1>
-            <span>Hệ Thống Quản Lý Ca Bệnh & Hội Chẩn Lâm Sàng Vệ Sinh Tuổi Dậy Thì v4.0</span>
+  <div class="app-container">
+    
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="clinic-logo">
+          <div class="pulse-cross">✚</div>
+          <div class="logo-text">
+            <span class="logo-title">NOVA HOSPITAL</span>
+            <span class="logo-subtitle">PUBLIC HEALTH OS</span>
+          </div>
         </div>
-        <div class="hud-display" style="display: flex; align-items: center; gap: 20px;">
-            <a href="puberty_portal.html" class="btn-action btn-reveal" style="padding: 8px 16px; font-size: 11px; margin: 0; display: inline-flex; align-items: center; gap: 6px; text-decoration: none; border-color: rgba(255,255,255,0.3); color: #94A3B8;">🏠 CỔNG ĐIỀU HÀNH</a>
-            <button class="btn-action btn-reveal" id="fullscreen-toggle" style="padding: 8px 16px; font-size: 11px; margin: 0; display: flex; align-items: center; gap: 6px;">📺 TOÀN MÀN HÌNH</button>
-            <div class="score-board">Điểm Tích Lũy Viện: <span id="score-val">0</span> XP</div>
-            <div class="timer-box" id="countdown-clock">05:00</div>
+        <div class="status-badge">
+          <span class="live-dot"></span>
+          <span class="live-text">ONLINE</span>
         </div>
-    </div>
+      </div>
 
-    <!-- Main Workspace Area -->
-    <div class="workspace-grid">
+      <!-- Scrollable Steps Menu -->
+      <div class="sidebar-menu-scrollable">
+        <nav class="sidebar-nav">
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ1: MỞ KHÓA NHIỆM VỤ</span>
+            <ul>
+              <li class="nav-item active" data-slide="1">
+                <span class="nav-num">01</span> <span class="nav-txt">HOẠT ĐỘNG 1: MỞ KHÓA NHIỆM VỤ TỔNG LỰC</span>
+              </li>
+              <li class="nav-item " data-slide="2">
+                <span class="nav-num">02</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 1</span>
+              </li>
+              <li class="nav-item " data-slide="3">
+                <span class="nav-num">03</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 2</span>
+              </li>
+              <li class="nav-item " data-slide="4">
+                <span class="nav-num">04</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 3</span>
+              </li>
+              <li class="nav-item " data-slide="5">
+                <span class="nav-num">05</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 4</span>
+              </li>
+              <li class="nav-item " data-slide="6">
+                <span class="nav-num">06</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 5</span>
+              </li>
+              <li class="nav-item " data-slide="7">
+                <span class="nav-num">07</span> <span class="nav-txt">BỨC ẢNH BÍ ẨN SỐ 6</span>
+              </li>
+              <li class="nav-item " data-slide="8">
+                <span class="nav-num">08</span> <span class="nav-txt">TỔNG KẾT: CẨM NANG SẠCH THƠM</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ2: NHẬN NHIỆM VỤ</span>
+            <ul>
+              <li class="nav-item " data-slide="9">
+                <span class="nav-num">09</span> <span class="nav-txt">MÀN HÌNH CHÚC MỪNG & NÚT ẤN MỞ KHÓA</span>
+              </li>
+              <li class="nav-item " data-slide="10">
+                <span class="nav-num">10</span> <span class="nav-txt">NHIỆM VỤ TRUYỀN THÔNG CỘNG ĐỒNG</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ3: KIỂM TRA THÔNG ĐIỆP</span>
+            <ul>
+              <li class="nav-item " data-slide="11">
+                <span class="nav-num">11</span> <span class="nav-txt">KIỂM TRA THÔNG ĐIỆP Y KHOA</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ4: HOÀN THIỆN THÔNG ĐIỆP</span>
+            <ul>
+              <li class="nav-item " data-slide="12">
+                <span class="nav-num">12</span> <span class="nav-txt">SÁNG TẠO KHẨU HIỆU TRUYỀN THÔNG (SLOGAN)</span>
+              </li>
+              <li class="nav-item " data-slide="13">
+                <span class="nav-num">13</span> <span class="nav-txt">GỢI Ý CHUYỂN ĐỔI KHẨU HIỆU DỄ NHỚ</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ5: DIỄN TẬP CHIẾN DỊCH</span>
+            <ul>
+              <li class="nav-item " data-slide="14">
+                <span class="nav-num">14</span> <span class="nav-txt">XÂY DỰNG KHUNG BÀI TUYÊN TRUYỀN</span>
+              </li>
+              <li class="nav-item " data-slide="15">
+                <span class="nav-num">15</span> <span class="nav-txt">PHÂN VAI CHIẾN DỊCH TRUYỀN THÔNG</span>
+              </li>
+              <li class="nav-item " data-slide="16">
+                <span class="nav-num">16</span> <span class="nav-txt">5 PHÚT DIỄN TẬP TOÀN DIỆN</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ6: TUYÊN TRUYỀN</span>
+            <ul>
+              <li class="nav-item " data-slide="17">
+                <span class="nav-num">17</span> <span class="nav-txt">CHIẾN DỊCH SỨC KHỎE LÊN SÀN THUYẾT TRÌNH</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ7: NHẬT KÝ CHUYÊN GIA</span>
+            <ul>
+              <li class="nav-item " data-slide="18">
+                <span class="nav-num">18</span> <span class="nav-txt">NHẬT KÝ CHUYÊN GIA SỨC KHỎE</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="nav-group">
+            <span class="nav-group-title">HĐ8: SỨ MỆNH BÁC SĨ</span>
+            <ul>
+              <li class="nav-item " data-slide="19">
+                <span class="nav-num">19</span> <span class="nav-txt">LỜI THỀ SỨ MỆNH & CAM KẾT HÀNH ĐỘNG THỰC TẾ</span>
+              </li>
+            </ul>
+          </div>
+
+        </nav>
+      </div>
+
+      <!-- Back to Portal button -->
+      <div style="padding: 10px 15px; border-top: 1px solid var(--glass-border);">
+        <a href="puberty_portal.html" class="btn btn-surface btn-block" style="display: block; text-align: center; text-decoration: none; padding: 10px; border-radius: 6px; font-size: 11px; font-weight: 800; color: var(--text-muted);">🏠 CỔNG ĐIỀU HÀNH</a>
+      </div>
+    </aside>
+
+    <!-- MAIN APP CONTENT VIEWPORT -->
+    <main class="main-content">
+      
+      <!-- Top header control bar -->
+      <header class="top-bar">
+        <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+          <a href="puberty_portal.html" class="back-portal-btn" title="Quay lại Cổng Học Tập"><i class="fa-solid fa-house"></i></a>
+          <button class="control-btn" id="sidebar-toggle" title="Thu gọn / Mở rộng Sidebar">☰</button>
+          <div class="active-stage-indicator" id="current-stage-display">
+            TIẾT 3: LAN TỎA SỨC KHỎE
+          </div>
+          <span class="phase-badge" id="slide-phase-badge" style="background: rgba(245, 158, 11, 0.15); border-color: #F59E0B; color: #F59E0B;">CHIẾN DỊCH TỔNG LỰC</span>
+          <h2 class="slide-title" id="slide-title-text">Chiến Dịch Tuyên Truyền Sức Khỏe Học Đường</h2>
+        </div>
         
-        <!-- Case List Sidebar -->
-        <div class="sidebar-cases" id="cases-list-panel">
-            <h2>Danh Sách Ca Bệnh Mở Rộng</h2>
-            <!-- Tabs dynamically rendered via Javascript -->
+        <div class="header-right" style="display: flex; align-items: center; gap: 15px;">
+          <button class="control-btn" id="teacher-guide-toggle" title="Chỉ dẫn giảng dạy" style="font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;"><i class="fa-solid fa-chalkboard-user"></i> <span class="btn-lbl">Chỉ dẫn</span></button>
+          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;"><i class="fa-solid fa-expand"></i> <span class="btn-lbl">Toàn màn hình</span></button>
+          
+          <!-- Slide Navigation Controls -->
+          <div class="slide-arrows">
+            <button class="arrow-btn" id="prev-slide-btn" title="Slide trước">◀</button>
+            <span class="slide-counter" id="slide-counter-text">1 / 19</span>
+            <button class="arrow-btn" id="next-slide-btn" title="Slide tiếp theo">▶</button>
+          </div>
+
+          <!-- Dynamic status indicator -->
+          <div class="role-status">
+            <span class="role-badge" id="header-role-badge">Bác sĩ Cộng đồng</span>
+          </div>
         </div>
+      </header>
 
-        <!-- Dynamic Clinical Viewer Dashboard -->
-        <div class="clinical-dashboard" id="clinical-dashboard-viewer">
-            <div class="panel-badge">Hội Chẩn Chuyên Sâu</div>
-            
-            <div class="patient-wrapper">
-                <div class="patient-info">
-                    <h2 id="view-patient-name">Bác Sĩ Đang Đọc Dữ Liệu...</h2>
-                    <p id="view-patient-meta">Khoa Lâm Sàng Kỹ Thuật Số</p>
-                </div>
+      <!-- Slides Viewport -->
+      <div class="slides-viewport">
+        <!-- Slide 1: HOẠT ĐỘNG 1: MỞ KHÓA NHIỆM VỤ TỔNG LỰC -->
+        <section class="slide active" id="slide-1">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
 
-                <div class="data-section">
-                    <div class="block-card symptom-card">
-                        <h4>Triệu Chứng Lâm Sàng</h4>
-                        <div class="block-content" id="view-symptoms">Vui lòng chọn một ca bệnh từ danh sách bên trái để bắt đầu phiên kiểm tra.</div>
-                    </div>
-                    <div class="block-card habit-card">
-                        <h4>Thói Quen Vệ Sinh Hiện Tại</h4>
-                        <div class="block-content" id="view-habits">Hệ thống sẵn sàng nạp dữ liệu phân tích thói quen sinh hoạt.</div>
-                    </div>
-                </div>
-
-                <div class="prescription-box" id="prescription-container">
-                    <h4>Phác Đồ Điều Trị Y Khoa Chuẩn Đạt Khuyến Nghị</h4>
-                    <div class="block-content prescription-blur" id="view-prescription">
-                        Nội dung phác đồ đang được bảo mật. Nhóm cần đưa ra chẩn đoán và báo cáo trước viện trước khi mở khóa kiểm tra.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Control Actions Footer -->
-            <div class="control-area">
-                <div class="grading-panel">
-                    <button class="btn-grade btn-plus" onclick="updateScore(50)">+50 XP (Đạt)</button>
-                    <button class="btn-grade btn-minus" onclick="updateScore(-20)">-20 XP (Sai Lầm)</button>
-                </div>
-                <div style="display: flex; gap: 15px;">
-                    <button class="btn-action btn-reveal" onclick="togglePrescriptionReveal()">Mở Khóa Toa Thuốc</button>
-                    <button class="btn-action btn-submit" onclick="triggerNextCase()">Ca Tiếp Theo</button>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <script>
-        // Data Store containing the 5 expanded medical case sheets
-        const clinicalCasesData = [
-            {
-                id: 4,
-                name: "Bệnh nhân: Bác sĩ Nam (13 tuổi)",
-                meta: "Chức danh giả lập: Thành viên Đội tuyển Cầu lông trường",
-                symptoms: "Vùng da dưới cánh tay (nách) xuất hiện nhiều mụn nước nhỏ, ngứa ngáy, da bị sạm màu và có mùi hôi rất đậm sau mỗi buổi tập thể thao cường độ cao.",
-                habits: "Trước mỗi trận đấu, khi nách đang đẫm mồ hôi, bạn thường xuyên xịt liên tục các loại nước hoa xịt khử mùi thô của người lớn đè trực tiếp lên để che mùi cơ thể.",
-                prescription: "Khắc chế vi khuẩn vùng nách: Tuyệt đối chống chỉ định dùng nước hoa/xịt khử mùi khi cơ thể chưa sạch. Thực hiện Quy trình tắm 6 bước: Chà sạch nách nhẹ nhàng ở Bước 4; Dùng khăn cá nhân lau THẬT KHÔ vùng nách ở Bước 6. Sau khi da khô mới áp dụng lăn khử mùi kháng khuẩn dành riêng cho lứa tuổi dậy thì. Thay mới giặt ngay quần áo lót thể thao sau tập."
-            },
-            {
-                id: 5,
-                name: "Bệnh nhân: Bác sĩ An (14 tuổi)",
-                meta: "Chức danh giả lập: Học sinh khối Trung học",
-                symptoms: "Da mặt vùng hai bên má, cằm và xung quanh vùng miệng xuất hiện dày đặc các loại mụn đầu đen, mụn cám bít tắc lỗ chân lông và một số nốt mụn mủ sưng đỏ đau nhức.",
-                habits: "Đeo một chiếc khẩu trang vải liên tục từ ngày này qua ngày khác khi đi học và đi chơi mà không hề giặt giũ vệ sinh. Mỗi khi thấy mụn nổi lên, bạn thường lấy tay không cạy, nặn trực tiếp ngay tại lớp học.",
-                prescription: "Bảo vệ hàng rào biểu bì mặt: Tuyệt đối nghiêm cấm cạy nặn mụn bằng tay chưa sát khuẩn. Thực hiện rửa mặt nhẹ nhàng bằng sữa rửa mặt hoặc xà phòng có độ cân bằng pH lý tưởng 5.5 ở Bước 4. Thay mới khẩu trang y tế/khấu trang vải sạch hàng ngày để triệt tiêu ổ vi khuẩn tích tụ từ hơi thở và khói bụi biểu bì."
-            },
-            {
-                id: 6,
-                name: "Bệnh nhân: Bác sĩ Phong (12 tuổi)",
-                meta: "Chức danh giả lập: Học sinh đam mê bơi lội",
-                symptoms: "Toàn bộ vùng da ở lưng và ngực bị ngứa ngáy râm ran liên tục, bề mặt xuất hiện các sẩn đỏ li ti sưng viêm rải rác xung quanh các nang lông.",
-                habits: "Sau khi từ bể bơi công cộng bước lên, bạn chỉ dội nhanh cơ thể dưới vòi nước sạch khoảng 10 giây rồi mặc quần áo đi thẳng về nhà luôn, để đến tối muộn mới tắm kỹ lại bằng xà phòng.",
-                prescription: "Xử lý viêm nang lông lưng ngực: Clo hóa chất và vi khuẩn bể bơi lưu giữ lâu ngày phá hủy màng bảo vệ da. Yêu cầu tắm kỹ ngay sau khi bơi xong. Áp dụng chuẩn Bước 4 (Xoa xà phòng pH 5.5 toàn thân); Đặc trị Bước 5 (Tắm tráng thật kỹ các vùng dễ bám bẩn tích tụ vi khuẩn bao gồm Lưng, Ngực, Gáy, Mông). Lau khô hoàn toàn trước khi mặc đồ mới."
-            },
-            {
-                id: 7,
-                name: "Bệnh nhân: Bác sĩ Linh (14 tuổi)",
-                meta: "Chức danh giả lập: Học sinh khối 8",
-                symptoms: "Vùng bẹn da nhạy cảm và nếp gấp sau hai đầu gối bị ngứa rát dữ dội, xuất hiện các mảng da tổn thương mẩn đỏ, tróc vảy mỏng nhẹ.",
-                habits: "Thường xuyên mặc quần jeans dày bó sát cơ thể (skinny jeans) liên tục kể cả trong những ngày hè oi bức, nóng nực. Do quần chất liệu dày lười giặt nên thường mặc lại quần jeans cũ 2-3 lần mới đem giặt.",
-                prescription: "Điều trị nấm kẽ và nếp gấp da: Vi khuẩn và vi nấm cực kỳ ưa thích độ ẩm cao ở nếp gấp bị b bị bít tắc bởi đồ bó. Áp dụng Bước 4: Vệ sinh vùng kín và vùng bẹn bằng nước sạch (không chà xà phòng thô phá hủy màng pH nhạy cảm). Thay đổi lối sống: Đổi sang mặc quần áo, đồ lót chất liệu cotton co giãn thông thoáng; tuyệt đối không mặc lại quần áo lót/quần jeans cũ của ngày hôm trước."
-            },
-            {
-                id: 8,
-                name: "Bệnh nhân: Bác sĩ Duy (15 tuổi)",
-                meta: "Chức danh giả lập: Thành viên Đội bóng đá",
-                symptoms: "Lòng bàn chân và các khu vực kẽ ngón chân bị bợt trắng da, ẩm ướt, ngứa rát vô cùng dữ dội và bốc mùi hôi thối nồng nặc đặc trưng mỗi khi cởi giày.",
-                habits: "Sau mỗi buổi tập luyện đá bóng, bạn thường xuyên tiện tay nhét nguyên đôi tất cũ đẫm mồ hôi vào bên trong giày thể thao, ngày hôm sau lại tiếp tục lôi ra đi tiếp mà không hề giặt sạch.",
-                prescription: "Triệt tiêu vi khuẩn mùi hôi chân: Thay đổi thói quen cốt lõi. Áp dụng triệt để Bước 6: Sau khi tắm xong, dùng khăn khô lau thật kỹ lòng bàn chân và từng kẽ ngón chân. Tuyệt đối nghiêm cấm đi lại tất cũ của ngày hôm trước; giặt sạch phơi khô tất sau mỗi lần đeo. Giày thể thao cần được phơi nắng hoặc xịt khuẩn định kỳ để giữ môi trường luôn khô ráo."
-            }
-        ];
-
-        let currentActiveIndex = 0;
-        let scoreXPCounter = 0;
-        let timerSecondsTotal = 300; // 5 minutes standard round
-        let timerIntervalNode = null;
-
-        // Sound Synthesizer Engine using Web Audio API for Retro Cyber Beeps
-        let audioCtx = null;
-        function playCyberSound(type) {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            if (audioCtx.state === 'suspended') {
-                audioCtx.resume();
-            }
-            
-            const osc = audioCtx.createOscillator();
-            const gain = audioCtx.createGain();
-            osc.connect(gain);
-            gain.connect(audioCtx.destination);
-            
-            if (type === 'click') {
-                osc.type = 'sine'; osc.frequency.setValueAtTime(600, audioCtx.currentTime);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.1);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.1);
-            } else if (type === 'success') {
-                osc.type = 'triangle'; osc.frequency.setValueAtTime(440, audioCtx.currentTime); osc.frequency.setValueAtTime(880, audioCtx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.1, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.3);
-            } else if (type === 'reveal') {
-                osc.type = 'sawtooth'; osc.frequency.setValueAtTime(1200, audioCtx.currentTime); osc.frequency.linearRampToValueAtTime(400, audioCtx.currentTime + 0.2);
-                gain.gain.setValueAtTime(0.08, audioCtx.currentTime); gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.2);
-                osc.start(); osc.stop(audioCtx.currentTime + 0.2);
-            }
-        }
-
-        // Initialize App Component Setup
-        function initAppDashboard() {
-            renderSidebarTabs();
-            loadTargetCaseData(0);
-            startCountdownEngine();
-
-            const fullscreenBtn = document.getElementById('fullscreen-toggle');
-            if (fullscreenBtn) {
-                fullscreenBtn.addEventListener('click', () => {
-                    if (!document.fullscreenElement) {
-                        document.documentElement.requestFullscreen().then(() => {
-                            fullscreenBtn.innerText = '📺 THU NHỎ';
-                        }).catch(err => {
-                            console.warn(`Error attempting to enable full-screen mode: ${err.message}`);
-                        });
-                    } else {
-                        document.exitFullscreen().then(() => {
-                            fullscreenBtn.innerText = '📺 TOÀN MÀN HÌNH';
-                        });
-                    }
-                });
-            }
-
-            document.addEventListener('fullscreenchange', () => {
-                if (fullscreenBtn) {
-                    if (document.fullscreenElement) {
-                        fullscreenBtn.innerText = '📺 THU NHỎ';
-                    } else {
-                        fullscreenBtn.innerText = '📺 TOÀN MÀN HÌNH';
-                    }
-                }
-            });
-        }
-
-        // Render Sidebar Menu Tabs Component
-        function renderSidebarTabs() {
-            const container = document.getElementById('cases-list-panel');
-            // Keep the header h2, clear the rest
-            container.innerHTML = '<h2>Danh Sách Ca Bệnh Mở Rộng</h2>';
-            
-            clinicalCasesData.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = `case-tab ${index === currentActiveIndex ? 'active' : ''}`;
-                card.id = `tab-index-${index}`;
-                card.onclick = () => { playCyberSound('click'); loadTargetCaseData(index); };
+            <div class="cover-layout" style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; text-align: center;">
+                <div class="badge-red" style="padding: 6px 14px; border-radius: 12px; font-size: 11px; font-weight: 900; background: rgba(6, 182, 212, 0.15); border: 1.5px solid var(--cyan); color: var(--cyan); text-transform: uppercase;">🚀 TRÒ CHƠI KHỞI ĐỘNG</div>
+                <h1 class="main-title">HOẠT ĐỘNG 1: MỞ KHÓA NHIỆM VỤ TỔNG LỰC</h1>
+                <h2 class="sub-title">Trò chơi: "Nhìn hình đoán chữ"</h2>
                 
-                card.innerHTML = `
-                    <h3>${item.name.replace("Bệnh nhân: ", "")}</h3>
-                    <p>Mã HS: #000${item.id} - Tuổi dậy thì</p>
-                `;
-                container.appendChild(card);
+                <div class="big-question-card glass-panel" style="max-width: 800px; margin: 20px auto; padding: 25px; border-radius: 12px; border: 1.5px solid var(--glass-border); background: var(--glass-bg);">
+                    <p class="question-text" style="font-size: 16pt !important; color: #FFF; font-weight: 700; line-height: 1.6;">
+                        "Giải mã thành công 6 bức ảnh để mở khóa chiến dịch sức khỏe học đường!"
+                    </p>
+                </div>
+                
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-cyan btn-lg btn-pulse" onclick="navigateToSlide(2)">🩺 BẮT ĐẦU BẺ KHÓA ▶</button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 2: BỨC ẢNH BÍ ẨN SỐ 1 -->
+        <section class="slide " id="slide-2">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 1</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 1/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-shower"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: HÀNH ĐỘNG DƯỚI VÒI NƯỚC</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s2" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s2" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 20pt !important; font-weight: 900; color: var(--cyan); transition: all 0.3s;">TẮM RỬA ĐÚNG CÁCH</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(2)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(3)" style="flex: 1; padding: 12px; font-weight: 800;">ẢNH TIẾP THEO <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 3: BỨC ẢNH BÍ ẨN SỐ 2 -->
+        <section class="slide " id="slide-3">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 2</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 2/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-pump-soap"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: VỆ SINH DA MẶT HẰNG NGÀY</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s3" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s3" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 18pt !important; font-weight: 900; color: var(--cyan);">RỬA MẶT BẰNG SỮA RỬA MẶT DỊU NHẸ</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(3)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(4)" style="flex: 1; padding: 12px; font-weight: 800;">ẢNH TIẾP THEO <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 4: BỨC ẢNH BÍ ẨN SỐ 3 -->
+        <section class="slide " id="slide-4">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 3</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 3/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-hand-holding-droplet"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: KỲ CỌ KỸ CÁC VÙNG KHUẤT</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s4" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s4" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 18pt !important; font-weight: 900; color: var(--cyan);">KỲ CỌ KỸ VÙNG NẾP GẤP (NÁCH, BẸN)</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(4)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(5)" style="flex: 1; padding: 12px; font-weight: 800;">ẢNH TIẾP THEO <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 5: BỨC ẢNH BÍ ẨN SỐ 4 -->
+        <section class="slide " id="slide-5">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 4</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 4/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-socks"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: ĐỒ VẬT ĐI TRONG GIÀY & ĐỒ LÓT</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s5" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s5" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 17pt !important; font-weight: 900; color: var(--cyan);">THAY TẤT, QUẦN ÁO LÓT HẰNG NGÀY</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(5)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(6)" style="flex: 1; padding: 12px; font-weight: 800;">ẢNH TIẾP THEO <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 6: BỨC ẢNH BÍ ẨN SỐ 5 -->
+        <section class="slide " id="slide-6">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 5</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 5/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-soap"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: LÀM SẠCH DA ĐẦU & TÓC BẾT</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s6" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s6" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 18pt !important; font-weight: 900; color: var(--cyan);">GỘI ĐẦU SẠCH SẼ VÀ LAU KHÔ RÁO</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(6)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(7)" style="flex: 1; padding: 12px; font-weight: 800;">ẢNH TIẾP THEO <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 7: BỨC ẢNH BÍ ẨN SỐ 6 -->
+        <section class="slide " id="slide-7">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; BỨC ẢNH BÍ ẨN SỐ 6</span>
+                <h2 class="slide-title">Bức ảnh bí ẩn 6/6</h2>
+            </div>
+            <div class="mystery-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="mystery-visual glass-panel" style="display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); min-height: 320px; background: rgba(15, 23, 42, 0.4);">
+                    <div class="glow-icon" style="font-size: 80px; color: var(--cyan); text-shadow: 0 0 30px var(--cyan-glow); margin-bottom: 20px;">
+                        <i class="fa-solid fa-hands-wash"></i>
+                    </div>
+                    <div style="font-size: 14px; color: var(--text-muted); font-weight: 800;">GỢI Ý: DIỆT KHUẨN BÀN TAY</div>
+                </div>
+                <div class="mystery-interactive" style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s7" data-duration="60" style="margin-bottom: 15px;">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="answer-box glass-panel blurred" id="ans-s7" style="padding: 25px; border-radius: 12px; border: 2px dashed var(--glass-border); text-align: center; margin-bottom: 20px;">
+                        <h4 style="color: var(--text-muted); font-size: 12px; margin-bottom: 8px; text-transform: uppercase;">Đáp án đúng</h4>
+                        <div class="answer-text" style="font-size: 17pt !important; font-weight: 900; color: var(--cyan);">RỬA SẠCH TAY BẰNG XÀ PHÒNG SÁT KHUẨN</div>
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <button class="btn btn-reveal" onclick="revealAnswer(7)" style="flex: 1; padding: 12px; font-weight: 800;"><i class="fa-solid fa-unlock-keyhole"></i> HIỆN ĐÁP ÁN</button>
+                        <button class="btn btn-cyan" onclick="navigateToSlide(8)" style="flex: 1; padding: 12px; font-weight: 800;">KẾT QUẢ GAME <i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 8: TỔNG KẾT: CẨM NANG SẠCH THƠM -->
+        <section class="slide " id="slide-8">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 1 &bull; TỔNG KẾT</span>
+                <h2 class="slide-title" style="color: #FFF !important; text-transform: uppercase; font-size: 2.2rem !important; font-weight: 900;">TỔNG KẾT: CẨM NANG SẠCH THƠM</h2>
+            </div>
+            <div class="summary-cards" style="display: flex; flex-direction: column; gap: 20px; margin-top: 30px;">
+                <div class="glass-panel" style="padding: 20px 30px; border-radius: 12px; border-left: 6px solid var(--neon-mint); background: rgba(16, 185, 129, 0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 24px; color: var(--neon-mint);"><i class="fa-solid fa-circle-check"></i></div>
+                    <div style="font-size: 16pt !important; font-weight: 700; color: #FFF;">Rửa mặt bằng sữa rửa mặt dịu nhẹ (2 lần/ngày).</div>
+                </div>
+                <div class="glass-panel" style="padding: 20px 30px; border-radius: 12px; border-left: 6px solid var(--neon-mint); background: rgba(16, 185, 129, 0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 24px; color: var(--neon-mint);"><i class="fa-solid fa-circle-check"></i></div>
+                    <div style="font-size: 16pt !important; font-weight: 700; color: #FFF;">Tắm rửa sạch sẽ toàn thân mỗi ngày.</div>
+                </div>
+                <div class="glass-panel" style="padding: 20px 30px; border-radius: 12px; border-left: 6px solid var(--neon-mint); background: rgba(16, 185, 129, 0.05); display: flex; align-items: center; gap: 20px;">
+                    <div style="font-size: 24px; color: var(--neon-mint);"><i class="fa-solid fa-circle-check"></i></div>
+                    <div style="font-size: 16pt !important; font-weight: 700; color: #FFF;">Thay quần áo, tất chân và đồ lót hằng ngày.</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 35px;">
+                <button class="btn btn-cyan btn-lg" onclick="navigateToSlide(9)">TIẾN VÀO NHIỆM VỤ TIẾP THEO ▶</button>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 9: MÀN HÌNH CHÚC MỪNG & NÚT ẤN MỞ KHÓA -->
+        <section class="slide " id="slide-9">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="cover-layout flex-center-col text-center" style="position: relative;">
+                <h1 class="main-title" style="color: var(--amber) !important; font-size: 32pt !important;">CHÚC MỪNG CÁC BÁC SĨ NHÍ!</h1>
+                <h2 class="sub-title" style="color: #FFF !important; margin-bottom: 30px;">Hội đồng Giám định đã sẵn sàng truyền thông</h2>
+                
+                <div class="unlock-zone" style="margin: 30px 0;">
+                    <button class="btn btn-cyan btn-lg btn-pulse" id="unlock-mission-btn" onclick="celebrateAndUnlock()" style="font-size: 20px; padding: 25px 50px; border-radius: 50px; font-weight: 900; background: var(--cyan); color: #000; box-shadow: 0 0 35px var(--cyan-glow);">
+                        📢 ẤN ĐỂ MỞ KHÓA NHIỆM VỤ
+                    </button>
+                </div>
+                <div class="unlock-indicator" style="font-size: 14px; color: var(--text-muted); font-weight: 800;">(Hãy bấm nút để kích nổ pháo hoa chào mừng và mở khóa nhiệm vụ!)</div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 10: NHIỆM VỤ TRUYỀN THÔNG CỘNG ĐỒNG -->
+        <section class="slide " id="slide-10">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 2 &bull; SỨ MỆNH TRUYỀN THÔNG</span>
+                <h2 class="slide-title">NHIỆM VỤ TRUYỀN THÔNG CỘNG ĐỒNG</h2>
+            </div>
+            <div class="glass-panel" style="padding: 40px; border-radius: 16px; border: 2px solid var(--cosmic-pink); background: rgba(255, 0, 122, 0.03); margin-top: 30px; box-shadow: 0 0 30px rgba(255, 0, 122, 0.1);">
+                <div style="font-size: 40px; color: var(--cosmic-pink); text-align: center; margin-bottom: 20px;"><i class="fa-solid fa-bullhorn animate-pulse"></i></div>
+                <div style="font-size: 20pt !important; font-weight: 900; color: #FFF; text-align: center; line-height: 1.6; text-transform: uppercase;">
+                    "TỔNG TIẾN CÔNG CHIẾN DỊCH TRUYỀN THÔNG SỨC KHỎE HỌC ĐƯỜNG: TUYÊN TRUYỀN CÁCH GIỮ GÌN VỆ SINH CƠ THỂ TUỔI DẬY THÌ CHO TOÀN TRƯỜNG!"
+                </div>
+            </div>
+            <div class="mission-details" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 25px;">
+                <div class="glass-panel" style="padding: 15px 25px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 800; text-transform: uppercase; margin-bottom: 5px;">👥 ĐỐI TƯỢNG (AUDIENCE)</div>
+                    <div style="font-size: 16px; font-weight: 700; color: var(--cyan);">Tất cả bạn bè, học sinh toàn trường Trung học</div>
+                </div>
+                <div class="glass-panel" style="padding: 15px 25px; border-radius: 8px; border: 1px solid var(--glass-border);">
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 800; text-transform: uppercase; margin-bottom: 5px;">🎯 MỤC TIÊU BÀI NÓI</div>
+                    <div style="font-size: 16px; font-weight: 700; color: var(--cyan);">Giúp bạn bè tự tin chăm sóc bản thân sạch thơm</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-cyan btn-lg" onclick="navigateToSlide(11)">XÂY DỰNG NỘI DUNG TRUYỀN THÔNG ▶</button>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 11: KIỂM TRA THÔNG ĐIỆP Y KHOA -->
+        <section class="slide " id="slide-11">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 3 &bull; KIỂM TRA THÔNG ĐIỆP</span>
+                <h2 class="slide-title">KIỂM TRA THÔNG ĐIỆP Y KHOA</h2>
+            </div>
+            <div class="timer-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="instructions-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 18px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-list-check"></i> YÊU CẦU RÀ SOÁT TỜ RƠI:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 14pt !important; font-weight: 600; line-height: 1.5; color: #FFF;">
+                        <div>• Lấy sản phẩm Tờ rơi đã thiết kế ở Tiết 2 ra rà soát.</div>
+                        <div>• Đảm bảo đủ thông tin y học cốt lõi (6 bước tắm khoa học, 4 lưu ý vệ sinh cơ thể).</div>
+                        <div>• Đảm bảo không có sai sót hay lệch lạc kiến thức khoa học định lượng.</div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s11" data-duration="420">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">07:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="action-card glass-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; margin-bottom: 15px; background: rgba(6, 182, 212, 0.02);">
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Nhiệm vụ nhóm</span>
+                        <p style="font-size: 15px; font-weight: 700; color: #FFF; margin-top: 5px;">Rà soát thông điệp chuẩn xác trước khi phát hành</p>
+                    </div>
+                    <button class="btn btn-cyan" onclick="navigateToSlide(12)" style="padding: 12px; font-weight: 800; font-size: 15px;">SÁNG TẠO KHẨU HIỆU TRUYỀN THÔNG <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 12: SÁNG TẠO KHẨU HIỆU TRUYỀN THÔNG (SLOGAN) -->
+        <section class="slide " id="slide-12">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 4 &bull; SÁNG TẠO SLOGAN</span>
+                <h2 class="slide-title">SÁNG TẠO SIÊU KHẨU HIỆU TRUYỀN THÔNG</h2>
+            </div>
+            <div class="timer-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="instructions-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 18px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-lightbulb"></i> NGUYÊN TẮC SLOGAN VÀNG:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 14pt !important; font-weight: 600; line-height: 1.5; color: #FFF;">
+                        <div>• <strong>Ngắn gọn:</strong> Dưới 12 từ để dễ nhớ.</div>
+                        <div>• <strong>Vần điệu:</strong> Có nhịp điệu dễ đọc thuộc lòng.</div>
+                        <div>• <strong>Hành động:</strong> Kêu gọi ý thức giữ gìn vệ sinh sạch thơm tuổi dậy thì.</div>
+                        <div style="color: var(--amber); font-weight: 800;">👉 Nhóm chốt slogan để đưa vào kết bài thuyết trình.</div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s12" data-duration="420">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">07:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="action-card glass-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; margin-bottom: 15px; background: rgba(6, 182, 212, 0.02);">
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Sáng tạo</span>
+                        <p style="font-size: 15px; font-weight: 700; color: #FFF; margin-top: 5px;">Viết slogan nhóm của bạn ra nháp ngay lập tức!</p>
+                    </div>
+                    <button class="btn btn-cyan" onclick="navigateToSlide(13)" style="padding: 12px; font-weight: 800; font-size: 15px;">XEM GỢI Ý SLOGAN ĐẮT GIÁ <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 13: GỢI Ý CHUYỂN ĐỔI KHẨU HIỆU DỄ NHỚ -->
+        <section class="slide " id="slide-13">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 4 &bull; GỢI Ý SLOGAN</span>
+                <h2 class="slide-title">GỢI Ý CHUYỂN ĐỔI KHẨU HIỆU DỄ NHỚ</h2>
+            </div>
+            <div class="interactive-slogan-converter" style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 30px;">
+                <div class="slogan-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4); display: flex; flex-direction: column; justify-content: space-between; min-height: 250px;">
+                    <div>
+                        <span style="color: var(--text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase;">CHỦ ĐỀ: CHĂM SÓC DA MẶT</span>
+                        <h4 style="font-size: 18px; color: #FFF; font-weight: 700; margin-top: 5px;">Mụn cám, mụn viêm trên trán cằm</h4>
+                    </div>
+                    <div class="converted-result" id="res-slogan-face" style="padding: 15px; border-radius: 8px; background: rgba(6,182,212,0.08); border: 1.5px dashed var(--cyan); color: var(--cyan); font-size: 15pt !important; font-weight: 900; text-align: center; opacity: 0; transform: scale(0.9); transition: all 0.3s ease;">
+                        ✨ "Sạch khuẩn mỗi ngày — Bay ngay mụn bọc!"
+                    </div>
+                    <button class="btn btn-cyan" onclick="convertSlogan('face')" style="width: 100%; padding: 10px; font-weight: 800;">
+                        💡 CHUYỂN ĐỔI THÀNH SLOGAN VẦN
+                    </button>
+                </div>
+                
+                <div class="slogan-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4); display: flex; flex-direction: column; justify-content: space-between; min-height: 250px;">
+                    <div>
+                        <span style="color: var(--text-muted); font-size: 11px; font-weight: 800; text-transform: uppercase;">CHỦ ĐỀ: MÙI CƠ THỂ TUỔI DẬY THÌ</span>
+                        <h4 style="font-size: 18px; color: #FFF; font-weight: 700; margin-top: 5px;">Mùi hôi vùng nách, chân khi vận động</h4>
+                    </div>
+                    <div class="converted-result" id="res-slogan-body" style="padding: 15px; border-radius: 8px; background: rgba(16,185,129,0.08); border: 1.5px dashed var(--neon-mint); color: var(--neon-mint); font-size: 15pt !important; font-weight: 900; text-align: center; opacity: 0; transform: scale(0.9); transition: all 0.3s ease;">
+                        ✨ "Cơ thể sạch thơm — Tự tin bước tới!"
+                    </div>
+                    <button class="btn btn-reveal" onclick="convertSlogan('body')" style="width: 100%; padding: 10px; font-weight: 800; border-color: var(--neon-mint); color: var(--neon-mint);">
+                        💡 CHUYỂN ĐỔI THÀNH SLOGAN VẦN
+                    </button>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 35px;">
+                <button class="btn btn-cyan btn-lg" onclick="navigateToSlide(14)">XÂY DỰNG KHUNG BÀI THUYẾT TRÌNH ▶</button>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 14: XÂY DỰNG KHUNG BÀI TUYÊN TRUYỀN -->
+        <section class="slide " id="slide-14">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 5 &bull; THIẾT LẬP KHUNG BÀI</span>
+                <h2 class="slide-title">XÂY DỰNG KHUNG BÀI TUYÊN TRUYỀN</h2>
+            </div>
+            <div class="framework-grid" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="glass-panel" style="padding: 25px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 16px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-toolbox"></i> DỤNG CỤ HỌC TẬP CẦN:</h3>
+                    <div style="display: flex; gap: 20px; margin-bottom: 20px;">
+                        <div class="tool-item" style="text-align: center; flex: 1; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+                            <span style="font-size: 30px;">📝</span>
+                            <div style="font-size: 13px; font-weight: 700; color: #FFF; margin-top: 5px;">Giấy nháp</div>
+                        </div>
+                        <div class="tool-item" style="text-align: center; flex: 1; padding: 15px; border-radius: 8px; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border);">
+                            <span style="font-size: 30px;">🖊️</span>
+                            <div style="font-size: 13px; font-weight: 700; color: #FFF; margin-top: 5px;">Bút viết</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 11.5pt !important; color: var(--text-muted); font-weight: 700;">(Một bạn chịu trách nhiệm ghi chép lại sườn bài viết cho cả nhóm)</div>
+                </div>
+                
+                <div class="glass-panel" style="padding: 25px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 16px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-rectangle-list"></i> 4 BƯỚC CẤU TRÚC BẮT BUỘC:</h3>
+                    <ol style="font-size: 13pt !important; font-weight: 700; color: #FFF; display: flex; flex-direction: column; gap: 12px; padding-left: 20px;">
+                        <li>1. Giới thiệu tên nhóm, tên các thành viên.</li>
+                        <li>2. Giới thiệu chủ đề chiến dịch vệ sinh cơ thể.</li>
+                        <li>3. Tuyên truyền nội dung cốt lõi (6 bước tắm / lưu ý).</li>
+                        <li>4. Đưa ra thông điệp khẩu hiệu (slogan) và lời chào kết.</li>
+                    </ol>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-cyan btn-lg" onclick="navigateToSlide(15)">PHÂN CHIA VAI THUYẾT TRÌNH ▶</button>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 15: PHÂN VAI CHIẾN DỊCH TRUYỀN THÔNG -->
+        <section class="slide " id="slide-15">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 5 &bull; PHÂN CHIA NHIỆM VỤ</span>
+                <h2 class="slide-title">PHÂN VAI CHIẾN DỊCH TRUYỀN THÔNG</h2>
+            </div>
+            <div class="role-distribution-layout" style="display: flex; flex-direction: column; gap: 15px; margin-top: 25px;">
+                <div class="role-row glass-panel" style="padding: 15px 25px; border-radius: 10px; border-left: 5px solid var(--cyan); background: rgba(6,182,212,0.04); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="font-size: 24px; color: var(--cyan);"><i class="fa-solid fa-user-doctor"></i></span>
+                        <div>
+                            <div style="font-size: 15px; font-weight: 800; color: #FFF;">THÀNH VIÊN A: PHẦN 1 + PHẦN 2</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Mở đầu, tự tin giới thiệu nhóm & chủ đề truyền thông</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--cyan); background: rgba(6,182,212,0.1); padding: 4px 10px; border-radius: 4px;">VAI DIỄN 1</div>
+                </div>
+                
+                <div class="role-row glass-panel" style="padding: 15px 25px; border-radius: 10px; border-left: 5px solid var(--amber); background: rgba(245,158,11,0.04); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="font-size: 24px; color: var(--amber);"><i class="fa-solid fa-user-doctor"></i></span>
+                        <div>
+                            <div style="font-size: 15px; font-weight: 800; color: #FFF;">THÀNH VIÊN B & C: PHẦN 3</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Tuyên truyền sâu nội dung 6 bước tắm, thói quen sạch thơm</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--amber); background: rgba(245,158,11,0.1); padding: 4px 10px; border-radius: 4px;">VAI DIỄN 2 + 3</div>
+                </div>
+                
+                <div class="role-row glass-panel" style="padding: 15px 25px; border-radius: 10px; border-left: 5px solid var(--cosmic-pink); background: rgba(255,0,122,0.04); display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <span style="font-size: 24px; color: var(--cosmic-pink);"><i class="fa-solid fa-user-doctor"></i></span>
+                        <div>
+                            <div style="font-size: 15px; font-weight: 800; color: #FFF;">THÀNH VIÊN D: PHẦN 4</div>
+                            <div style="font-size: 12px; color: var(--text-muted);">Đọc to slogan kết nối thuyết phục & chào kết thúc</div>
+                        </div>
+                    </div>
+                    <div style="font-size: 13px; font-weight: 800; color: var(--cosmic-pink); background: rgba(255,0,122,0.1); padding: 4px 10px; border-radius: 4px;">VAI DIỄN 4</div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="btn btn-cyan btn-lg" onclick="navigateToSlide(16)">BẮT ĐẦU DIỄN TẬP HỎA TỐC ▶</button>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 16: 5 PHÚT DIỄN TẬP TOÀN DIỆN -->
+        <section class="slide " id="slide-16">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 5 &bull; DIỄN TẬP CHIẾN DỊCH</span>
+                <h2 class="slide-title">5 PHÚT DIỄN TẬP TOÀN DIỆN</h2>
+            </div>
+            <div class="timer-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="instructions-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 18px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-circle-exclamation"></i> LƯU Ý KHI DIỄN TẬP:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 14pt !important; font-weight: 600; line-height: 1.5; color: #FFF;">
+                        <div>• Đứng dậy theo nhóm, cầm tờ rơi trên tay để thuyết trình.</div>
+                        <div>• Ráp thử giọng nói to rõ, tự tin, phong thái chững chạc chuyên gia.</div>
+                        <div>• Nhờ bạn bè sửa tông giọng, cử chỉ cơ thể tự nhiên.</div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s16" data-duration="300">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">05:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="action-card glass-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; margin-bottom: 15px; background: rgba(6, 182, 212, 0.02);">
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Luyện tập</span>
+                        <p style="font-size: 15px; font-weight: 700; color: #FFF; margin-top: 5px;">Cùng nhau ráp nói cuốn chiếu liên tục ngay lập tức!</p>
+                    </div>
+                    <button class="btn btn-cyan" onclick="navigateToSlide(17)" style="padding: 12px; font-weight: 800; font-size: 15px;">LÊN SÀN THUYẾT TRÌNH BÙNG NỔ <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 17: CHIẾN DỊCH SỨC KHỎE LÊN SÀN THUYẾT TRÌNH -->
+        <section class="slide " id="slide-17">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 6 &bull; CHIẾN DỊCH LÊN SÀN</span>
+                <h2 class="slide-title" style="color: var(--amber) !important;">CHIẾN DỊCH SỨC KHỎE LÊN SÀN THUYẾT TRÌNH</h2>
+            </div>
+            <div class="timer-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="instructions-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+                    <div style="font-size: 50px; color: var(--cyan); margin-bottom: 15px;"><i class="fa-solid fa-microphone"></i></div>
+                    <h3 style="font-size: 20px; color: #FFF; font-weight: 800; margin-bottom: 10px;">SÂN KHẤU TRUYỀN THÔNG</h3>
+                    <p style="font-size: 14pt !important; font-weight: 600; color: var(--text-muted);">Các nhóm tự tin bước lên bục giảng thực hiện tuyên truyền trước toàn lớp.</p>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s17" data-duration="90">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">01:30</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="action-card glass-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; margin-bottom: 15px; background: rgba(6, 182, 212, 0.02);">
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Thuyết trình</span>
+                        <p style="font-size: 15px; font-weight: 700; color: #FFF; margin-top: 5px;">Mỗi nhóm có tối đa 1 phút 30 giây để hoàn thành!</p>
+                    </div>
+                    <button class="btn btn-cyan" onclick="navigateToSlide(18)" style="padding: 12px; font-weight: 800; font-size: 15px;">VIẾT NHẬT KÝ TỰ SOI CHIẾU <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 18: NHẬT KÝ CHUYÊN GIA SỨC KHỎE -->
+        <section class="slide " id="slide-18">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 7 &bull; TỰ SOI CHIẾU</span>
+                <h2 class="slide-title">NHẬT KÝ CHUYÊN GIA SỨC KHỎE</h2>
+            </div>
+            <div class="timer-layout" style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; margin-top: 20px;">
+                <div class="instructions-card glass-panel" style="padding: 30px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 18px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-pen-fancy"></i> CÂU HỎI SUY NGẪM CÁ NHÂN:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 20px; font-size: 14pt !important; font-weight: 600; line-height: 1.6; color: #FFF;">
+                        <div>
+                            <strong style="color: var(--cyan);">📝 Câu hỏi 1:</strong><br>
+                            Sau khi tuyên truyền, em thấy mình đã thực sự làm chủ kiến thức tuổi dậy thì chưa?
+                        </div>
+                        <div>
+                            <strong style="color: var(--cyan);">📝 Câu hỏi 2:</strong><br>
+                            Điều gì làm em tự hào nhất trong bài thuyết trình của nhóm mình hôm nay?
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; justify-content: space-between; padding: 10px 0;">
+                    <div class="timer-widget" id="timer-s18" data-duration="180">
+                        <div class="timer-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                        <div class="timer-display">03:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-btn play-btn" title="Bắt đầu"><i class="fa-solid fa-play"></i></button>
+                            <button class="timer-btn pause-btn hidden" title="Tạm dừng"><i class="fa-solid fa-pause"></i></button>
+                            <button class="timer-btn reset-btn" title="Đặt lại"><i class="fa-solid fa-rotate-left"></i></button>
+                        </div>
+                    </div>
+                    <div class="action-card glass-panel" style="padding: 20px; border-radius: 12px; border: 1px solid var(--glass-border); text-align: center; margin-bottom: 15px; background: rgba(6, 182, 212, 0.02);">
+                        <span style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase;">Viết nhật ký</span>
+                        <p style="font-size: 15px; font-weight: 700; color: #FFF; margin-top: 5px;">Viết chân thực suy ngẫm vào phiếu cá nhân.</p>
+                    </div>
+                    <button class="btn btn-cyan" onclick="navigateToSlide(19)" style="padding: 12px; font-weight: 800; font-size: 15px;">THỰC HIỆN NGHI THỨC TUYÊN THỆ <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+
+        <!-- Slide 19: LỜI THỀ SỨ MỆNH & CAM KẾT HÀNH ĐỘNG THỰC TẾ -->
+        <section class="slide " id="slide-19">
+          <div class="slide-layout flex-center-col">
+            <div class="slide-frame" style="max-width: 1100px; width: 100%;">
+
+            <div class="slide-header">
+                <span class="breadcrumb">HOẠT ĐỘNG 8 &bull; CAM KẾT HÀNH ĐỘNG</span>
+                <h2 class="slide-title">LỜI THỀ SỨ MỆNH BÁC SĨ NOVASTARS</h2>
+            </div>
+            <div class="pledge-layout" style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 30px; margin-top: 20px;">
+                <div class="pledge-checklist glass-panel" style="padding: 25px; border-radius: 16px; border: 1.5px solid var(--glass-border); background: rgba(15, 23, 42, 0.4);">
+                    <h3 style="font-size: 16px; color: var(--cyan); font-weight: 800; margin-bottom: 15px;"><i class="fa-solid fa-square-check"></i> VIỆC CẦN LÀM MỖI NGÀY:</h3>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 15px; font-size: 14pt !important; font-weight: 700; color: #FFF;">
+                        <label class="check-label" style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                            <input type="checkbox" class="pledge-checkbox" id="chk-1" style="width: 24px; height: 24px; accent-color: var(--cyan);">
+                            <span>Rửa mặt bằng sữa rửa mặt dịu nhẹ hằng ngày.</span>
+                        </label>
+                        <label class="check-label" style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                            <input type="checkbox" class="pledge-checkbox" id="chk-2" style="width: 24px; height: 24px; accent-color: var(--cyan);">
+                            <span>Tắm rửa sạch sẽ toàn thân mỗi ngày.</span>
+                        </label>
+                        <label class="check-label" style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                            <input type="checkbox" class="pledge-checkbox" id="chk-3" style="width: 24px; height: 24px; accent-color: var(--cyan);">
+                            <span>Thay mới tất chân, đồ lót mỗi ngày.</span>
+                        </label>
+                        <label class="check-label" style="display: flex; align-items: center; gap: 15px; cursor: pointer;">
+                            <input type="checkbox" class="pledge-checkbox" id="chk-4" style="width: 24px; height: 24px; accent-color: var(--cyan);">
+                            <span>Thay giặt quần áo sạch sẽ hằng ngày.</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="certification-zone glass-panel" style="padding: 25px; border-radius: 16px; border: 2px dashed rgba(255,255,255,0.1); background: rgba(15, 23, 42, 0.4); display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 250px; text-align: center; position: relative; overflow: hidden;">
+                    <div id="pledge-stamp" style="font-size: 90px; color: rgba(255, 255, 255, 0.05); transition: all 0.5s ease;">
+                        <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div id="pledge-congrats" style="display: none; animation: fadeIn 0.8s ease;">
+                        <h4 style="font-size: 16px; color: var(--cyan); font-weight: 800; text-transform: uppercase;">BÁC SĨ NOVASTARS CHÍNH THỨC</h4>
+                        <p style="font-size: 14pt !important; color: #FFF; font-weight: 700; margin-top: 10px;">Đã hoàn thành xuất sắc khóa đào tạo lâm sàng!</p>
+                        <div style="font-size: 18pt !important; color: var(--amber); font-weight: 900; margin-top: 15px; text-shadow: 0 0 10px rgba(245,158,11,0.3);">
+                            Khỏe mạnh - Tự tin - Sạch thơm bước tới!
+                        </div>
+                    </div>
+                    <div id="pledge-pending" style="font-size: 13px; color: var(--text-muted); font-weight: 800; text-transform: uppercase; margin-top: 10px;">
+                        (Tích chọn tất cả 4 ô cam kết để đóng dấu sứ mệnh!)
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 25px;">
+                <a href="puberty_portal.html" class="btn btn-cyan btn-lg" style="text-decoration: none; display: inline-block;">🏠 HOÀN THÀNH VÀ QUAY VỀ CỔNG CHÍNH</a>
+            </div>
+        
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- TEACHER GUIDE SIDEBAR -->
+    <aside class="teacher-sidebar collapsed" id="teacher-guide-sidebar">
+      <div class="teacher-sidebar-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <h3 style="margin: 0; font-family: var(--font-heading); font-size: 12px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px;">📋 HƯỚNG DẪN GIẢNG DẠY</h3>
+          <span style="font-size: 10px; color: #0891B2; font-weight: 800; background: rgba(8,145,178,0.1); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">GIÁO VIÊN</span>
+        </div>
+        <button class="control-btn" id="teacher-guide-close" title="Ẩn Hướng dẫn" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-muted); font-size: 14px; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); line-height: 1;">✕</button>
+      </div>
+      <div class="teacher-sidebar-content" style="height: calc(100vh - 130px); overflow-y: auto; padding: 15px;">
+        <div id="guide-slide-1" class="guide-panel active">
+          <div class="guide-panel-group">Slide 1: HOẠT ĐỘNG 1: MỞ KHÓA NHIỆM VỤ TỔNG LỰC</div>
+          <h3 class="guide-panel-title">Trò chơi: "Nhìn hình đoán chữ"</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn kiến thức, tạo hứng thú.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Ổn định lớp, dẫn dắt đầy năng lượng: 'Chào mừng các bác sĩ đến với ngày hội lan tỏa! Để mở khóa được nhiệm vụ hôm nay, toàn lớp phải giải mã nhanh 6 hình ảnh y khoa!'.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Tập trung nhìn lên màn hình, sẵn sàng tư thế giơ tay.</p>
+          </div>
+        </div>
+        <div id="guide-slide-2" class="guide-panel ">
+          <div class="guide-panel-group">Slide 2: BỨC ẢNH BÍ ẨN SỐ 1</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 1</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập thói quen tắm rửa đúng cách.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động đếm ngược 1 phút. GV điều phối gọi học sinh giơ tay nhanh nhất đoán cụm từ thể hiện cách chăm sóc cơ thể tuổi dậy thì đúng cách.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Nhìn hình, suy nghĩ nhanh, giơ tay và hô thật to đáp án của mình khi được gọi.</p>
+          </div>
+        </div>
+        <div id="guide-slide-3" class="guide-panel ">
+          <div class="guide-panel-group">Slide 3: BỨC ẢNH BÍ ẨN SỐ 2</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 2</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập thói quen rửa mặt đúng cách.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide tự động đếm ngược 1 phút. GV điều phối gọi học sinh giơ tay nhanh nhất đoán cụm từ đúng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Nhìn hình, suy nghĩ nhanh, giơ tay đoán đáp án.</p>
+          </div>
+        </div>
+        <div id="guide-slide-4" class="guide-panel ">
+          <div class="guide-panel-group">Slide 4: BỨC ẢNH BÍ ẨN SỐ 3</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 3</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập làm sạch nếp gấp da.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Bật đồng hồ đếm ngược 1 phút. Nhắc nhở HS về cơ chế tích tụ vi khuẩn tại vùng kín, vùng cánh tay.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đoán từ khóa và hiểu bài học lâm sàng.</p>
+          </div>
+        </div>
+        <div id="guide-slide-5" class="guide-panel ">
+          <div class="guide-panel-group">Slide 5: BỨC ẢNH BÍ ẨN SỐ 4</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 4</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập thay giặt quần áo sạch.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Điều phối HS đoán đáp án. Lưu ý: Mặc đồ lót ẩm hoặc mang tất bẩn là ổ nấm mốc nghiêm trọng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đoán từ khóa.</p>
+          </div>
+        </div>
+        <div id="guide-slide-6" class="guide-panel ">
+          <div class="guide-panel-group">Slide 6: BỨC ẢNH BÍ ẨN SỐ 5</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 5</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập quy trình gội đầu lau khô.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Slide đếm ngược 1 phút. GV nhấn mạnh gội đầu giúp loại bỏ bã nhờn, gàu bết da đầu gây rụng tóc.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đoán cụm từ.</p>
+          </div>
+        </div>
+        <div id="guide-slide-7" class="guide-panel ">
+          <div class="guide-panel-group">Slide 7: BỨC ẢNH BÍ ẨN SỐ 6</div>
+          <h3 class="guide-panel-title">Giải mã thói quen 6</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Ôn tập rửa tay sát khuẩn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Đồng hồ chạy lùi 1 phút. GV nhấn mạnh: Bàn tay chứa hàng triệu vi khuẩn, sờ tay lên mặt gây mụn viêm mủ bọc bít tắc.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Nhìn hình nhanh giơ tay giành quyền trả lời.</p>
+          </div>
+        </div>
+        <div id="guide-slide-8" class="guide-panel ">
+          <div class="guide-panel-group">Slide 8: TỔNG KẾT: CẨM NANG SẠCH THƠM</div>
+          <h3 class="guide-panel-title">Quy chuẩn vệ sinh tuổi dậy thì</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Lưu lại kiến thức cốt lõi.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Khái quát lại kiến thức vừa ôn tập, nhấn mạnh đây là quy chuẩn bắt buộc của tuổi dậy thì.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đồng thanh đọc lại các lưu ý để ghi nhớ thông tin.</p>
+          </div>
+        </div>
+        <div id="guide-slide-9" class="guide-panel ">
+          <div class="guide-panel-group">Slide 9: MÀN HÌNH CHÚC MỪNG & NÚT ẤN MỞ KHÓA</div>
+          <h3 class="guide-panel-title">Kích hoạt chiến dịch tổng tiến công</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Chúc mừng và truyền cảm hứng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hào hứng chúc mừng cả lớp và hướng dẫn: 'Thầy/cô sẽ ấn nút kích hoạt nhiệm vụ chính thức của các em!'. Giáo viên bấm trực tiếp vào nút ấn trên slide để kích nổ confetti.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Hào hứng cổ vũ, sẵn sàng tiếp nhận sứ mệnh lớn tiếp theo.</p>
+          </div>
+        </div>
+        <div id="guide-slide-10" class="guide-panel ">
+          <div class="guide-panel-group">Slide 10: NHIỆM VỤ TRUYỀN THÔNG CỘNG ĐỒNG</div>
+          <h3 class="guide-panel-title">Đối tượng mục tiêu và sứ mệnh</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Xác định rõ vai trò và nhiệm vụ.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Đọc to nhiệm vụ với tông giọng trang trọng, thúc đẩy tinh thần trách nhiệm bác sĩ cộng đồng của học sinh.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Lắng nghe, xác định rõ đối tượng khán giả và mục tiêu bài nói.</p>
+          </div>
+        </div>
+        <div id="guide-slide-11" class="guide-panel ">
+          <div class="guide-panel-group">Slide 11: KIỂM TRA THÔNG ĐIỆP Y KHOA</div>
+          <h3 class="guide-panel-title">Rà soát lại Tờ rơi nhóm</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Đảm bảo tính chính xác khoa học.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Bật đồng hồ 7 phút, yêu cầu các nhóm lấy tờ rơi tiết trước ra kiểm tra nghiêm túc để đảm bảo thông tin phát ra là chuẩn y khoa.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Các nhóm ngồi lại cùng nhau, mở tờ rơi ra, đọc rà soát kĩ nội dung truyền thông đã viết.</p>
+          </div>
+        </div>
+        <div id="guide-slide-12" class="guide-panel ">
+          <div class="guide-panel-group">Slide 12: SÁNG TẠO KHẨU HIỆU TRUYỀN THÔNG (SLOGAN)</div>
+          <h3 class="guide-panel-title">Mài giũa thông điệp dễ nhớ</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Tạo khẩu hiệu ngắn gọn, ấn tượng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Dẫn dắt: 'Một bài tuyên truyền hay cần một slogan đắt giá đọng lại trong tâm trí người nghe. Các nhóm hãy thảo luận mài giũa khẩu hiệu của mình!'.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Động não, thảo luận nhanh để tìm ra câu khẩu hiệu đại diện cho thương hiệu nhóm mình.</p>
+          </div>
+        </div>
+        <div id="guide-slide-13" class="guide-panel ">
+          <div class="guide-panel-group">Slide 13: GỢI Ý CHUYỂN ĐỔI KHẨU HIỆU DỄ NHỚ</div>
+          <h3 class="guide-panel-title">Nút bấm chuyển đổi khẩu hiệu mẫu</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Trợ giúp học sinh cách chuyển đổi khẩu hiệu mẫu.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hướng dẫn học sinh cách tư duy từ thông điệp thô cứng sang khẩu hiệu có vần điệu dễ nhớ bằng việc bấm demo các nút gợi ý trên slide.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Quan sát cách chuyển đổi mẫu để tự hoàn thiện Slogan độc quyền của nhóm.</p>
+          </div>
+        </div>
+        <div id="guide-slide-14" class="guide-panel ">
+          <div class="guide-panel-group">Slide 14: XÂY DỰNG KHUNG BÀI TUYÊN TRUYỀN</div>
+          <h3 class="guide-panel-title">Cấu trúc bài thuyết trình bắt buộc</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Thiết lập cấu trúc bài nói chuẩn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Yêu cầu các nhóm lấy giấy nháp, bút ra để phác thảo nhanh khung bài nói theo đúng 4 phần quy chuẩn được hiển thị trên màn hình.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Chuẩn bị sẵn giấy bút, một bạn ghi chép khung sườn bài thuyết trình cho cả nhóm.</p>
+          </div>
+        </div>
+        <div id="guide-slide-15" class="guide-panel ">
+          <div class="guide-panel-group">Slide 15: PHÂN VAI CHIẾN DỊCH TRUYỀN THÔNG</div>
+          <h3 class="guide-panel-title">Phân chia vai diễn thuyết trình</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Đảm bảo sự tham gia của tất cả thành viên.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Nhấn mạnh: 'Tất cả thành viên đều phải có vai diễn thuyết trình, không ai đứng im trên sân khấu!'.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Nhóm tiến hành phân chia công việc cụ thể cho từng thành viên theo sơ đồ trên màn hình.</p>
+          </div>
+        </div>
+        <div id="guide-slide-16" class="guide-panel ">
+          <div class="guide-panel-group">Slide 16: 5 PHÚT DIỄN TẬP TOÀN DIỆN</div>
+          <h3 class="guide-panel-title">Ráp lời thuyết trình hỏa tốc</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Luyện tập diễn tập theo nhóm.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Bấm chạy giờ 5 phút, đi quanh lớp đốc thúc các nhóm chạy thử bài nói, hướng dẫn học sinh nói to, dứt khoát.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đứng dậy theo nhóm, tự tin diễn tập ráp lời liên tục cùng nhau.</p>
+          </div>
+        </div>
+        <div id="guide-slide-17" class="guide-panel ">
+          <div class="guide-panel-group">Slide 17: CHIẾN DỊCH SỨC KHỎE LÊN SÀN THUYẾT TRÌNH</div>
+          <h3 class="guide-panel-title">Các nhóm báo cáo thực địa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Thực hiện thuyết trình trước lớp.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Điều phối, gọi lần lượt các nhóm lên bảng. Đóng vai trò ban giám khảo bấm giờ nghiêm túc cho mỗi đội.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Nhóm được gọi bước lên bảng phối hợp nhịp nhàng thuyết trình; học sinh ở dưới chú ý lắng nghe.</p>
+          </div>
+        </div>
+        <div id="guide-slide-18" class="guide-panel ">
+          <div class="guide-panel-group">Slide 18: NHẬT KÝ CHUYÊN GIA SỨC KHỎE</div>
+          <h3 class="guide-panel-title">Tự soi chiếu và đúc kết cá nhân</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Tự phản chiếu suy nghĩ cá nhân.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Hạ tông giọng, tạo không gian yên tĩnh lắng đọng: 'Hãy dành 3 phút cuối cùng để ghi lại những suy nghĩ chân thực nhất của các em vào phiếu cá nhân'.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Ngồi độc lập tĩnh lặng, suy nghĩ sâu sắc và viết câu trả lời vào phiếu.</p>
+          </div>
+        </div>
+        <div id="guide-slide-19" class="guide-panel ">
+          <div class="guide-panel-group">Slide 19: LỜI THỀ SỨ MỆNH & CAM KẾT HÀNH ĐỘNG THỰC TẾ</div>
+          <h3 class="guide-panel-title">Cam kết bảo vệ sức khỏe bản thân</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 MỤC TIÊU:</h4>
+            <p>Nghi thức sắc phong cam kết hành động.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>Yêu cầu cả lớp đứng dậy, đọc to lời thề sứ mệnh và tích chọn bản cam kết hành động thực tế bằng danh sách việc cần làm trong ngày trên màn hình.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>👤 HỌC SINH:</h4>
+            <p>Đứng thẳng lưng nghiêm túc thực hiện cam kết, sau đó thu dọn dụng cụ nháp, rác giấy xung quanh chỗ ngồi sạch sẽ trước khi ra về.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Audio elements for cyber feel -->
+  <script>
+    // Simple synth audio engine for click beep feedback
+    let synthCtx = null;
+    function playBeep(freq = 440, duration = 0.08) {
+      try {
+        if (!synthCtx) synthCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (synthCtx.state === 'suspended') synthCtx.resume();
+        const osc = synthCtx.createOscillator();
+        const gain = synthCtx.createGain();
+        osc.connect(gain);
+        gain.connect(synthCtx.destination);
+        osc.frequency.value = freq;
+        gain.gain.setValueAtTime(0.08, synthCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, synthCtx.currentTime + duration);
+        osc.start();
+        osc.stop(synthCtx.currentTime + duration);
+      } catch(e) {
+        console.warn("Synth failed to play", e);
+      }
+    }
+  </script>
+
+  <!-- Navigation and Timer Logic Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      let currentSlide = 1;
+      const totalSlides = 19;
+
+      const slideItems = document.querySelectorAll(".slides-viewport .slide");
+      const navItems = document.querySelectorAll(".sidebar-nav .nav-item");
+      const slideCounterText = document.getElementById("slide-counter-text");
+      const appContainer = document.querySelector(".app-container");
+      
+      // Update Slide State Function
+      function navigateToSlide(num) {
+        if (num < 1 || num > totalSlides) return;
+        playBeep(520, 0.06);
+        currentSlide = num;
+        
+        // Update slides active state
+        slideItems.forEach(s => s.classList.remove("active"));
+        document.getElementById(`slide-${num}`).classList.add("active");
+        
+        // Update sidebar items active state
+        navItems.forEach(item => {
+          item.classList.remove("active");
+          if (parseInt(item.getAttribute("data-slide")) === num) {
+            item.classList.add("active");
+            
+            // Auto scroll sidebar item into view
+            item.scrollIntoView({ behavior: "smooth", block: "nearest" });
+          }
+        });
+        
+        // Update slide counter
+        slideCounterText.innerText = `${num} / ${totalSlides}`;
+
+        // Sync teacher guide sidebar panels
+        document.querySelectorAll(".guide-panel").forEach(p => p.classList.remove("active"));
+        const guidePanel = document.getElementById(`guide-slide-${num}`);
+        if (guidePanel) guidePanel.classList.add("active");
+      }
+      
+      // Bind navigation handlers to arrows
+      document.getElementById("prev-slide-btn").addEventListener("click", () => {
+        navigateToSlide(currentSlide - 1);
+      });
+      
+      document.getElementById("next-slide-btn").addEventListener("click", () => {
+        navigateToSlide(currentSlide + 1);
+      });
+      
+      // Bind click listeners on sidebar items
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          const slideNum = parseInt(item.getAttribute("data-slide"));
+          navigateToSlide(slideNum);
+        });
+      });
+      
+      // Sidebar collapse toggle
+      const sidebarToggle = document.getElementById("sidebar-toggle");
+      if (sidebarToggle) {
+        sidebarToggle.addEventListener("click", () => {
+          playBeep(400, 0.05);
+          appContainer.classList.toggle("sidebar-collapsed");
+        });
+      }
+      
+      // Teacher guide drawer toggle
+      const teacherGuideToggle = document.getElementById("teacher-guide-toggle");
+      const teacherGuideClose = document.getElementById("teacher-guide-close");
+      const teacherGuideSidebar = document.getElementById("teacher-guide-sidebar");
+      
+      if (teacherGuideToggle) {
+        teacherGuideToggle.addEventListener("click", () => {
+          const isOpen = appContainer.classList.toggle("guide-open");
+          if (teacherGuideSidebar) {
+            teacherGuideSidebar.classList.toggle("collapsed", !isOpen);
+          }
+          playBeep(450, 0.05);
+        });
+      }
+      
+      if (teacherGuideClose) {
+        teacherGuideClose.addEventListener("click", () => {
+          appContainer.classList.remove("guide-open");
+          if (teacherGuideSidebar) {
+            teacherGuideSidebar.classList.add("collapsed");
+          }
+          playBeep(350, 0.05);
+        });
+      }
+      
+      // Fullscreen support
+      const fullscreenBtn = document.getElementById("fullscreen-toggle");
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener("click", () => {
+          playBeep(480, 0.05);
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().then(() => {
+              fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i> <span class="btn-lbl">Thu nhỏ</span>';
+            }).catch(err => {
+              console.warn("Fullscreen failed", err);
             });
+          } else {
+            document.exitFullscreen().then(() => {
+              fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i> <span class="btn-lbl">Toàn màn hình</span>';
+            });
+          }
+        });
+      }
+      
+      document.addEventListener("fullscreenchange", () => {
+        if (fullscreenBtn) {
+          if (document.fullscreenElement) {
+            fullscreenBtn.innerHTML = '<i class="fa-solid fa-compress"></i> <span class="btn-lbl">Thu nhỏ</span>';
+          } else {
+            fullscreenBtn.innerHTML = '<i class="fa-solid fa-expand"></i> <span class="btn-lbl">Toàn màn hình</span>';
+          }
         }
-
-        // Load targeted medical records into data blocks viewer
-        function loadTargetCaseData(index) {
-            currentActiveIndex = index;
+      });
+      
+      // Make navigation functions global
+      window.navigateToSlide = navigateToSlide;
+      
+      // ----------------- TIMER WIDGET LOGIC -----------------
+      function initSlideTimers() {
+        const timers = document.querySelectorAll(".timer-widget");
+        timers.forEach(timer => {
+          const display = timer.querySelector(".timer-display");
+          const playBtn = timer.querySelector(".play-btn");
+          const pauseBtn = timer.querySelector(".pause-btn");
+          const resetBtn = timer.querySelector(".reset-btn");
+          const duration = parseInt(timer.getAttribute("data-duration"));
+          
+          let timeLeft = duration;
+          let interval = null;
+          
+          function formatTime(secs) {
+            const m = Math.floor(secs / 60).toString().padStart(2, '0');
+            const s = (secs % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+          }
+          
+          function updateDisplay() {
+            display.innerText = formatTime(timeLeft);
+          }
+          
+          playBtn.addEventListener("click", () => {
+            playBeep(600, 0.05);
+            playBtn.classList.add("hidden");
+            pauseBtn.classList.remove("hidden");
             
-            // Manage Active Class Highlight Update
-            document.querySelectorAll('.case-tab').forEach(el => el.classList.remove('active'));
-            const activeTab = document.getElementById(`tab-index-${index}`);
-            if (activeTab) activeTab.classList.add('active');
-
-            const item = clinicalCasesData[index];
-            document.getElementById('view-patient-name').innerText = item.name;
-            document.getElementById('view-patient-meta').innerText = item.meta;
-            document.getElementById('view-symptoms').innerText = item.symptoms;
-            document.getElementById('view-habits').innerText = item.habits;
-            document.getElementById('view-prescription').innerText = item.prescription;
-
-            // Reset Prescription Container State Blur Lock
-            document.getElementById('prescription-container').classList.remove('reveal');
-        }
-
-        // Toggle state presentation to reveal prescription data
-        function togglePrescriptionReveal() {
-            playCyberSound('reveal');
-            const container = document.getElementById('prescription-container');
-            container.classList.toggle('reveal');
-        }
-
-        // Sequence pipeline mechanism to next case record file
-        function triggerNextCase() {
-            playCyberSound('success');
-            let nextIndex = currentActiveIndex + 1;
-            if (nextIndex >= clinicalCasesData.length) {
-                nextIndex = 0; // wrap loop round
-            }
-            loadTargetCaseData(nextIndex);
-        }
-
-        // Interactive Scoreboard Modifier Utility
-        function updateScore(amount) {
-            scoreXPCounter += amount;
-            if (scoreXPCounter < 0) scoreXPCounter = 0;
-            document.getElementById('score-val').innerText = scoreXPCounter;
-            playCyberSound('success');
-        }
-
-        // Clock Engine Loop Logic Component
-        function startCountdownEngine() {
-            if (timerIntervalNode) clearInterval(timerIntervalNode);
-            
-            timerIntervalNode = setInterval(() => {
-                timerSecondsTotal--;
-                if (timerSecondsTotal <= 0) {
-                    clearInterval(timerIntervalNode);
-                    document.getElementById('countdown-clock').innerText = "HẾT GIỜ";
-                    document.getElementById('countdown-clock').style.animation = "blink 1s infinite";
-                    return;
-                }
-
-                const min = Math.floor(timerSecondsTotal / 60).toString().padStart(2, '0');
-                const sec = (timerSecondsTotal % 60).toString().padStart(2, '0');
-                document.getElementById('countdown-clock').innerText = `${min}:${sec}`;
+            if (interval) clearInterval(interval);
+            interval = setInterval(() => {
+              timeLeft--;
+              if (timeLeft <= 0) {
+                clearInterval(interval);
+                playBeep(880, 0.3); // success chime
+                timeLeft = 0;
+                display.innerText = "HẾT GIỜ";
+                display.style.color = "var(--digital-coral)";
+              } else {
+                updateDisplay();
+              }
             }, 1000);
+          });
+          
+          pauseBtn.addEventListener("click", () => {
+            playBeep(450, 0.05);
+            pauseBtn.classList.add("hidden");
+            playBtn.classList.remove("hidden");
+            clearInterval(interval);
+          });
+          
+          resetBtn.addEventListener("click", () => {
+            playBeep(350, 0.05);
+            clearInterval(interval);
+            timeLeft = duration;
+            updateDisplay();
+            playBtn.classList.remove("hidden");
+            pauseBtn.classList.add("hidden");
+            display.style.color = "var(--digital-coral)";
+          });
+        });
+      }
+      initSlideTimers();
+      
+      // ----------------- GAME GUESSING INTERACTION -----------------
+      window.revealAnswer = function(slideNum) {
+        playBeep(650, 0.1);
+        const box = document.getElementById(`ans-s${slideNum}`);
+        if (box) {
+          box.classList.remove("blurred");
+          box.style.borderColor = "var(--cyan)";
+          box.style.background = "rgba(6,182,212,0.08)";
         }
-
-        // Trigger loading workflow application initialization
-        window.onload = initAppDashboard;
-    </script>
+      }
+      
+      // ----------------- SLIDE 9 UNLOCK CELEBRATION -----------------
+      let confettiActive = false;
+      window.celebrateAndUnlock = function() {
+        playBeep(800, 0.15);
+        // Fire confetti
+        triggerConfettiSplash();
+        setTimeout(() => {
+          triggerConfettiSplash();
+        }, 400);
+        
+        // Navigate to slide 10 after a short delay
+        setTimeout(() => {
+          navigateToSlide(10);
+        }, 1200);
+      }
+      
+      // ----------------- SLIDE 13 SLOGAN CONVERTER -----------------
+      window.convertSlogan = function(type) {
+        playBeep(700, 0.08);
+        const res = document.getElementById(`res-slogan-${type}`);
+        if (res) {
+          res.style.opacity = "1";
+          res.style.transform = "scale(1)";
+        }
+      }
+      
+      // ----------------- SLIDE 19 CHECKLIST PLEDGE -----------------
+      const checkboxes = document.querySelectorAll(".pledge-checkbox");
+      checkboxes.forEach(chk => {
+        chk.addEventListener("change", () => {
+          playBeep(600, 0.04);
+          checkPledgeProgress();
+        });
+      });
+      
+      function checkPledgeProgress() {
+        const allChecked = Array.from(checkboxes).every(chk => chk.checked);
+        const congrats = document.getElementById("pledge-congrats");
+        const pending = document.getElementById("pledge-pending");
+        const stamp = document.getElementById("pledge-stamp");
+        
+        if (allChecked) {
+          playBeep(880, 0.25);
+          triggerConfettiSplash();
+          congrats.style.display = "block";
+          pending.style.display = "none";
+          stamp.style.color = "var(--amber)";
+          stamp.style.animation = "stampGrow 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards";
+        } else {
+          congrats.style.display = "none";
+          pending.style.display = "block";
+          stamp.style.color = "rgba(255, 255, 255, 0.05)";
+          stamp.style.animation = "none";
+        }
+      }
+      
+      // Simple particle confetti system
+      const canvas = document.getElementById("confetti-canvas");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      let animationFrame = null;
+      
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener("resize", resizeCanvas);
+      resizeCanvas();
+      
+      function triggerConfettiSplash() {
+        const colors = ["#00F0FF", "#FF007A", "#10B981", "#FFD700", "#EC4899"];
+        for(let i=0; i<80; i++) {
+          particles.push({
+            x: window.innerWidth / 2,
+            y: window.innerHeight / 2 + 50,
+            vx: (Math.random() - 0.5) * 15,
+            vy: (Math.random() - 0.7) * 18 - 5,
+            r: Math.random() * 6 + 4,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            alpha: 1,
+            decay: Math.random() * 0.015 + 0.01
+          });
+        }
+        
+        if (!confettiActive) {
+          confettiActive = true;
+          loopConfetti();
+        }
+      }
+      
+      function loopConfetti() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        for (let i = particles.length - 1; i >= 0; i--) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+          p.vy += 0.3; // gravity
+          p.alpha -= p.decay;
+          
+          if (p.alpha <= 0) {
+            particles.splice(i, 1);
+          } else {
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.fillStyle = p.color;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+          }
+        }
+        
+        if (particles.length > 0) {
+          animationFrame = requestAnimationFrame(loopConfetti);
+        } else {
+          confettiActive = false;
+          cancelAnimationFrame(animationFrame);
+        }
+      }
+    });
+  </script>
 </body>
 </html>

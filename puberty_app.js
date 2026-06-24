@@ -66,6 +66,15 @@ function navigateToSlide(slideNum) {
   
   // Update counter
   document.getElementById('slide-counter-text').innerText = `${slideNum} / ${totalSlides}`;
+
+  // Sync Right Sidebar Guide Content
+  document.querySelectorAll('.guide-panel').forEach(panel => {
+    panel.classList.remove('active');
+  });
+  const activeGuidePanel = document.getElementById(`guide-slide-${slideNum}`);
+  if (activeGuidePanel) {
+    activeGuidePanel.classList.add('active');
+  }
   
   // Update sidebar active state
   document.querySelectorAll('.nav-item').forEach(item => {
@@ -855,6 +864,28 @@ window.triggerGraduationConfetti = triggerGraduationConfetti;
 
 // --- INITIALIZATION & EVENTS ---
 document.addEventListener('DOMContentLoaded', () => {
+  // Teacher Guide Sidebar Toggle
+  const teacherGuideToggle = document.getElementById('teacher-guide-toggle');
+  const teacherGuideSidebar = document.getElementById('teacher-guide-sidebar');
+  const appContainer = document.querySelector('.app-container');
+  if (teacherGuideToggle && appContainer) {
+    teacherGuideToggle.addEventListener('click', () => {
+      const isGuideOpen = appContainer.classList.toggle('guide-open');
+      if (teacherGuideSidebar) {
+        teacherGuideSidebar.classList.toggle('collapsed', !isGuideOpen);
+      }
+    });
+  }
+  const teacherGuideClose = document.getElementById('teacher-guide-close');
+  if (teacherGuideClose && appContainer) {
+    teacherGuideClose.addEventListener('click', () => {
+      appContainer.classList.remove('guide-open');
+      if (teacherGuideSidebar) {
+        teacherGuideSidebar.classList.add('collapsed');
+      }
+    });
+  }
+
   // Fullscreen toggle
   const fullscreenBtn = document.getElementById('fullscreen-toggle');
   if (fullscreenBtn) {

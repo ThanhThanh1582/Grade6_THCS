@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="puberty_style.css">
 </head>
 <body>
@@ -194,14 +195,19 @@
       
       <!-- Top header control bar -->
       <header class="top-bar">
-        <div class="header-left">
+        <div class="header-left" style="display: flex; align-items: center; gap: 10px;">
+          <a href="puberty_portal.html" class="back-portal-btn" title="Quay lại Cổng Học Tập"><i class="fa-solid fa-house"></i></a>
           <button class="control-btn" id="sidebar-toggle" title="Thu gọn / Mở rộng Sidebar">☰</button>
+          <div class="active-stage-indicator" id="current-stage-display">
+            TIẾT 1: KHÁM CA BỆNH
+          </div>
           <span class="phase-badge" id="slide-phase-badge">BÀI GIẢNG Y KHOA</span>
           <h2 class="slide-title" id="slide-title-text">Hành Trình Sắc Phong Bác Sĩ Chuyên Khoa</h2>
         </div>
         
         <div class="header-right" style="display: flex; align-items: center; gap: 15px;">
-          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;">📺 TOÀN MÀN HÌNH</button>
+          <button class="control-btn" id="teacher-guide-toggle" title="Chỉ dẫn giảng dạy" style="font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;"><i class="fa-solid fa-chalkboard-user"></i> <span class="btn-lbl">Chỉ dẫn</span></button>
+          <button class="control-btn" id="fullscreen-toggle" title="Toàn màn hình" style="font-weight: 800; display: inline-flex; align-items: center; gap: 6px; cursor: pointer;"><i class="fa-solid fa-expand"></i> <span class="btn-lbl">Toàn màn hình</span></button>
           <!-- Slide Navigation Controls -->
           <div class="slide-arrows">
             <button class="arrow-btn" id="prev-slide-btn" title="Slide trước">◀</button>
@@ -1133,6 +1139,463 @@
 
       </div>
     </main>
+      <!-- TEACHER GUIDE SIDEBAR -->
+    <aside class="teacher-sidebar collapsed" id="teacher-guide-sidebar">
+      <div class="teacher-sidebar-header">
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <h3 style="margin: 0; font-family: var(--font-heading); font-size: 12px; font-weight: 900; color: var(--text-main); display: flex; align-items: center; gap: 8px;">📋 HƯỚNG DẪN GIẢNG DẠY</h3>
+          <span style="font-size: 10px; color: #0891B2; font-weight: 800; background: rgba(8,145,178,0.1); padding: 2px 6px; border-radius: 4px; letter-spacing: 0.5px;">GIÁO VIÊN</span>
+        </div>
+        <button class="control-btn" id="teacher-guide-close" title="Ẩn Hướng dẫn" style="background: none; border: 1.5px solid var(--glass-border); color: var(--text-muted); font-size: 14px; padding: 4px 8px; border-radius: 4px; cursor: pointer; font-weight: 800; transition: var(--transition-smooth); line-height: 1;">✕</button>
+      </div>
+      <div class="teacher-sidebar-content" style="height: calc(100vh - 130px); overflow-y: auto; padding: 15px;">
+        <div id="guide-slide-1" class="guide-panel active">
+          <div class="guide-panel-group">Slide 1: HÀNH TRÌNH SẮC PHONG BÁC SĨ CHUYÊN KHOA</div>
+          <h3 class="guide-panel-title">Bài học: Vệ sinh cơ thể tuổi dậy thì</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Chào mừng các Bác sĩ Lâm sàng đến với Hội đồng Giám định Y khoa Nova Hospital! Hãy chuẩn bị ống nghe và bệnh án để bước vào chuỗi thử thách da liễu cấp bách.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>"Chào mừng tất cả các bác sĩ thực tập đã có mặt tại buổi hội chẩn cấp cao của Nova Hospital! Hôm nay, các bạn không chỉ học tập mà sẽ đóng vai các bác sĩ thực tập, vượt qua 4 thử thách lâm sàng lớn để chính thức được sắc phong thành Bác sĩ Chuyên khoa Da liễu."</p>
+          </div>
+        </div>
+        <div id="guide-slide-2" class="guide-panel ">
+          <div class="guide-panel-group">Slide 2: CÂU HỎI LỚN CỦA BÀI HỌC</div>
+          <h3 class="guide-panel-title">Câu hỏi cốt lõi định hướng hành vi</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Làm thế nào để cơ thể luôn sạch sẽ, thơm tho trong cả giai đoạn tuổi dậy thì?</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p>GV nêu câu hỏi lớn của bài học để học sinh suy nghĩ, thảo luận định hướng trong suốt quá trình học tập.</p>
+          </div>
+        </div>
+        <div id="guide-slide-3" class="guide-panel ">
+          <div class="guide-panel-group">Slide 3: CHỈ TIÊU CẤP BẰNG CHUYÊN GIA</div>
+          <h3 class="guide-panel-title">3 Mục tiêu năng lực cốt lõi các bác sĩ cần đạt</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>-  Kiến thức: Giải mã được cơ chế sinh mùi và mụn do hoóc-môn tuổi dậy thì.
+  -  Kỹ năng: Khám, chẩn đoán ca bệnh và kê đơn quy trình làm sạch định lượng chuẩn y khoa.
+  -  Thái độ: Chủ động, tự tin chăm sóc cơ thể sạch sẽ, thơm tho và xóa bỏ ngại ngùng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-4" class="guide-panel ">
+          <div class="guide-panel-group">Slide 4: THỬ THÁCH 1: KHÁM LÂM SÀNG SƠ BỘ</div>
+          <h3 class="guide-panel-title">Cấp độ: Bác sĩ Thực tập</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mục tiêu: Tiếp cận nhanh triệu chứng của 3 ca bệnh đầu tiên để đưa ra phán đoán y khoa ban đầu.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-5" class="guide-panel ">
+          <div class="guide-panel-group">Slide 5: TIẾP NHẬN 3 CA BỆNH KHẨN CẤP</div>
+          <h3 class="guide-panel-title">Hồ sơ bệnh án trên màn hình</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Hiển thị 3 tập hồ sơ bệnh nhân Su (Mụn mặt), Nam (Mùi nách), Kem (Hơi thở) kèm hình ảnh minh họa tương ứng. 
+  - Bệnh nhân Su: Mặt nổi mụn đỏ sưng tấy. Thói quen hay dùng tay bẩn sờ mặt, cạy mụn.
+  - Bệnh nhân Nam: Vùng nách tiết nhiều mồ hôi, mùi chua nồng. Thói quen đá bóng xong không tắm ngay, mặc đồ đẫm mồ hôi đi ngủ.
+  - Bệnh nhân Kem: Hơi thở có mùi khó chịu. Thói quen hay ăn đồ ngọt ban đêm, lười cạo lưỡi và không súc miệng sau ăn ngọt.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-6" class="guide-panel ">
+          <div class="guide-panel-group">Slide 6: QUY CHẾ PHÁN ĐOÁN LÂM SÀNG</div>
+          <h3 class="guide-panel-title">Yêu cầu thực hiện cho bác sĩ</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>- Bước 1: Đọc kỹ triệu chứng và thói quen sinh hoạt của từng bạn nhỏ.
+  - Bước 2: Suy nghĩ độc lập, tìm mối liên hệ giữa thói quen xấu và biểu hiện bệnh.
+  - Bước 3: Giơ tay nhanh, trả lời dứt khoát trong 30 giây để đoán nguyên nhân.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-7" class="guide-panel ">
+          <div class="guide-panel-group">Slide 7: CÂU HỎI ĐIỀU HƯỚNG LÂM SÀNG</div>
+          <h3 class="guide-panel-title">Bác sĩ hãy đưa ra phán đoán</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>"Vì sao bạn Su bị mụn đỏ sưng tấy? Vì sao bạn Nam có mùi chua ở nách? Vì sao bạn Kem lại bị hôi miệng dù có đánh răng?"</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-8" class="guide-panel ">
+          <div class="guide-panel-group">Slide 8: KẾT QUẢ ĐỐI CHIẾU LÂM SÀNG</div>
+          <h3 class="guide-panel-title">Nguyên nhân thực tế từ thói quen</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p></p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-9" class="guide-panel ">
+          <div class="guide-panel-group">Slide 9: CHÚC MỪNG: VƯỢT QUA VÒNG SƠ TUYỂN!</div>
+          <h3 class="guide-panel-title">Kết luận của Viện trưởng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>🎉 Chúc mừng các bác sĩ đã nhận diện chính xác hành vi lỗi!
+  - Tổng kết: Các triệu chứng mụn hay mùi hôi đều xuất phát trực tiếp từ những thói quen sinh hoạt chưa khoa học của các bạn khi bước vào lứa tuổi dậy thì.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-10" class="guide-panel ">
+          <div class="guide-panel-group">Slide 10: THỬ THÁCH 2: HỘI CHẨN CHUYÊN SÂU</div>
+          <h3 class="guide-panel-title">Cấp độ: Bác sĩ Nội trú</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mục tiêu: Nhập vai kíp trực nhóm để lật mở "Thủ phạm giấu mặt" kích thích các triệu chứng dậy thì trở nặng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-11" class="guide-panel ">
+          <div class="guide-panel-group">Slide 11: THÀNH LẬP KÍP TRỰC CẤP CỨU</div>
+          <h3 class="guide-panel-title">Ổn định vị trí hội chẩn (Chọn bệnh án)</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p></p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-12" class="guide-panel ">
+          <div class="guide-panel-group">Slide 12: QUY TRÌNH HỘI CHẨN 4 BƯỚC</div>
+          <h3 class="guide-panel-title">Yêu cầu thực hiện cho kíp trực</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>- Bước 1: Nhóm chọn 1 bệnh án bất kỳ trong 5 hồ sơ.
+  - Bước 2: Đọc kỹ, dùng bút khoanh tròn các Triệu chứng trên giấy EMR.
+  - Bước 3: Thảo luận, vạch ra các Thói quen sinh hoạt chưa đúng.
+  - Bước 4: Trả lời câu hỏi cốt lõi trên phiếu để tìm thủ phạm giấu mặt.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-13" class="guide-panel ">
+          <div class="guide-panel-group">Slide 13: CÂU HỎI THÁCH THỨC HỘI CHẨN</div>
+          <h3 class="guide-panel-title">Đi tìm nguyên nhân sâu xa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>"Lý do sâu xa nào bên trong cơ thể đã kích thích, làm bùng phát các triệu chứng da đổ dầu, mụn trứng cá và mồ hôi chua nồng ở lứa tuổi này?"</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-14" class="guide-panel ">
+          <div class="guide-panel-group">Slide 14: BÁO CÁO KẾT QUẢ HỘI CHẨN</div>
+          <h3 class="guide-panel-title">Trình bày ý kiến của nhóm</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mẫu câu báo cáo chuyên nghiệp dành cho đại diện nhóm: "Nhóm em chọn bệnh án số... Bệnh nhân có triệu chứng là... Thói quen sinh hoạt sai là... Nhóm em dự đoán lý do gây ra triệu chứng là..."</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-15" class="guide-panel ">
+          <div class="guide-panel-group">Slide 15: HỒ SƠ LẬT MỞ: ĐÁP ÁN Y KHOA</div>
+          <h3 class="guide-panel-title">Thủ phạm giấu mặt lộ diện</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p></p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-16" class="guide-panel ">
+          <div class="guide-panel-group">Slide 16: XUẤT SẮC: KÍP TRỰC HOÀN THÀNH NHIỆM VỤ!</div>
+          <h3 class="guide-panel-title">Tổng kết từ Hội đồng Giám định</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>🎉 Chúc mừng các nhóm đã chẩn đoán đúng bệnh lý nền!
+  - Tổng kết: Sự thay đổi hoóc-môn tuổi dậy thì bên trong kết hợp với các thói quen sinh hoạt chưa đúng bên ngoài chính là nguyên nhân kép gây ra mùi và mụn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-17" class="guide-panel ">
+          <div class="guide-panel-group">Slide 17: THỬ THÁCH 3: PHÒNG THÍ NGHIỆM SINH HỌC</div>
+          <h3 class="guide-panel-title">Cấp độ: Bác sĩ Chuyên khoa dự bị</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mục tiêu: Bẻ gãy mật mã y khoa để tìm ra 3 yếu tố cốt lõi khiến cơ thể tuổi dậy thì dễ có mùi khó chịu.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-18" class="guide-panel ">
+          <div class="guide-panel-group">Slide 18: KÍCH HOẠT THIẾT BỊ GIẢI MÃ</div>
+          <h3 class="guide-panel-title">Chuẩn bị giấy nháp</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Các nhóm chuẩn bị sẵn giấy nháp và bút để ghi lại các gợi ý chữ cái từ giáo viên. Tập trung cao độ để giành quyền bấm chuông trả lời từ khóa.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-19" class="guide-panel ">
+          <div class="guide-panel-group">Slide 19: LUẬT CHƠI: ĐỌC GỢI Ý - TÌM CHỮ CÁI</div>
+          <h3 class="guide-panel-title">Quy chế tính điểm cho kíp trực</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Thảo luận nhóm thật nhanh dựa trên gợi ý và đếm số ký tự chữ cái. Cả nhóm đồng thanh hô to từ khóa ngay khi tìm ra mật mã để ghi điểm.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-20" class="guide-panel ">
+          <div class="guide-panel-group">Slide 20: TRUY TÌM 3 CHÌA KHÓA BÍ ẨN</div>
+          <h3 class="guide-panel-title">Giải mã câu hỏi điều hướng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>- Gợi ý 1: Chất hóa học nội tiết sinh ra mạnh mẽ ở tuổi dậy thì là gì? (7 ký tự)
+  - Gợi ý 2: Cơ quan tiết chất lỏng dính, béo dưới cánh tay là gì? (11 ký tự)
+  - Gợi ý 3: Sinh vật siêu nhỏ ăn chất tiết mồ hôi và sinh mùi hôi là gì? (18 ký tự)</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-21" class="guide-panel ">
+          <div class="guide-panel-group">Slide 21: ĐÁP ÁN: 3 TỪ KHÓA MẬT MÃ CHUẨN</div>
+          <h3 class="guide-panel-title">Hệ thống khóa sinh học đã mở</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p></p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-22" class="guide-panel ">
+          <div class="guide-panel-group">Slide 22: ĐOẠN GIẢI THÍCH KHOA HỌC</div>
+          <h3 class="guide-panel-title">Cơ chế sinh mùi dưới góc nhìn bác sĩ</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>- Hormone kích thích Tuyến mồ hôi tiết nhiều chất béo/protein ở nách, vùng kín.
+  - Mồ hôi này ban đầu không có mùi, nhưng khi tiết ra bề mặt da, đây lại là món ăn của vi khuẩn.
+  - Vi khuẩn phát triển phân hủy chất béo này \(\rightarrow\) Tạo ra mùi hôi chua khó chịu.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-23" class="guide-panel ">
+          <div class="guide-panel-group">Slide 23: HOÀN THÀNH: CÔNG THỨC MÙI CƠ THỂ</div>
+          <h3 class="guide-panel-title">Tiền đề để kê đơn điều trị</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>🎉 Chúc mừng các chuyên gia đã làm chủ cơ chế sinh học!
+  - Tổng kết: Cơ thể tuổi dậy thì có mùi khó chịu là do: Hormone + Tuyến mồ hôi tăng tiết + Vi khuẩn phát triển phân hủy chất tiết đó.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-24" class="guide-panel ">
+          <div class="guide-panel-group">Slide 24: THỬ THÁCH 4: THỰC HÀNH LÂM SÀNG</div>
+          <h3 class="guide-panel-title">Cấp độ: Bác sĩ Điều trị chính</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mục tiêu: Sắp xếp bộ thẻ để kê đơn một quy trình tắm rửa đúng cách khoa học nhằm loại bỏ tận gốc vi khuẩn.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-25" class="guide-panel ">
+          <div class="guide-panel-group">Slide 25: TIẾP NHẬN BỘ THẺ QUY TRÌNH</div>
+          <h3 class="guide-panel-title">Nhận học cụ y khoa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mỗi kíp trực nhận một bộ thẻ hành động tắm rửa đã bị xáo trộn thứ tự. Nhận phôi giấy "Đơn thuốc làm sạch" để dán cố định quy trình.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-26" class="guide-panel ">
+          <div class="guide-panel-group">Slide 26: QUY CHẾ KÊ ĐƠN LÀM SẠCH</div>
+          <h3 class="guide-panel-title">Yêu cầu thực hiện cho nhóm</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Thảo luận nhóm, sắp xếp các thẻ hành động tắm rửa theo thứ tự logic: Từ trên xuống dưới, từ trước ra sau. Thời gian thực hiện: 3 phút để hoàn thiện việc dán thẻ.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-27" class="guide-panel ">
+          <div class="guide-panel-group">Slide 27: TRÌNH DUYỆT ĐƠN THUỐC LÀM SẠCH</div>
+          <h3 class="guide-panel-title">Trình bày ý kiến của kíp trực nhanh nhất</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Kíp trực hoàn thành đầu tiên giơ cao sản phẩm "Đơn thuốc làm sạch". Đại diện nhóm đứng dậy đọc to quy trình tắm rửa từ Bước 1 đến Bước 6 trước Hội đồng toàn lớp.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-28" class="guide-panel ">
+          <div class="guide-panel-group">Slide 28: QUY TRÌNH LÀM SẠCH CHUẨN KHOA HỌC</div>
+          <h3 class="guide-panel-title">6 Bước tắm rửa loại bỏ vi khuẩn</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Bản đồ hiển thị mạch mũi tên 6 bước:
+  - B1: Xả nước ướt người \(\rightarrow\) B2: Gội đầu và xả sạch bọt \(\rightarrow\) B3: Rửa mặt dịu nhẹ \(\rightarrow\) B4: Thoa xà phòng kỳ cọ kỹ \(\rightarrow\) B5: Xả sạch bọt với nước mát \(\rightarrow\) B6: Lau khô người bằng khăn sạch.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-29" class="guide-panel ">
+          <div class="guide-panel-group">Slide 29: TUYỆT VỜI: ĐƠN THUỐC ĐẠT CHUẨN Y KHOA!</div>
+          <h3 class="guide-panel-title">Tổng kết từ Viện trưởng</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>🎉 Chúc mừng các bác sĩ đã làm chủ quy trình làm sạch!
+  - Tổng kết: Tắm đúng quy trình giúp loại bỏ hoàn toàn môi trường sống của vi khuẩn, ngăn bọt xà phòng hay dầu gội tù đọng gây mụn bọc ở ngực và lưng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-30" class="guide-panel ">
+          <div class="guide-panel-group">Slide 30: THỬ THÁCH CUỐI: BẢN ĐỒ HÀNH VI SỨC KHỎE</div>
+          <h3 class="guide-panel-title">Cấp độ: Kỳ thi Sắc phong Chuyên khoa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mục tiêu: Phân loại chính xác các hành động giữ cơ thể sạch sẽ, thơm tho vào hai cột Nên và Không nên.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-31" class="guide-panel ">
+          <div class="guide-panel-group">Slide 31: CHUẨN BỊ BẢNG PHÂN LOẠI T-CHART</div>
+          <h3 class="guide-panel-title">Sẵn sàng rổ thẻ thói quen</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Mỗi nhóm nhận một rổ thẻ chứa các hành động vệ sinh hằng ngày. Nhận bảng phân loại Bản đồ thói quen chia đôi cột.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-32" class="guide-panel ">
+          <div class="guide-panel-group">Slide 32: QUY CHẾ THI SẮC PHONG CHUYÊN KHOA</div>
+          <h3 class="guide-panel-title">Yêu cầu phân loại cho nhóm</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Đọc kỹ nội dung thẻ và phân loại vào cột NÊN hoặc KHÔNG NÊN dựa trên bộ quy tắc y khoa:
+  - Vùng cần vệ sinh: Vùng dễ mụn (mặt, ngực, lưng) và Vùng dễ tích vi khuẩn (nách, chân, vùng riêng tư).
+  - Thói quen vàng: Dùng xà phòng pH 5.5, lăn khử mùi khi da khô, thay tất/đồ lót hằng ngày.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-33" class="guide-panel ">
+          <div class="guide-panel-group">Slide 33: THẨM ĐỊNH BẢN ĐỒ HÀNH VI</div>
+          <h3 class="guide-panel-title">Nhóm bảo vệ quan điểm da liễu</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Các nhóm hoàn thiện dán thẻ, đại diện kíp trực đứng dậy giải thích lý do vì sao chọn hành động đó vào cột "Nên" hoặc "Không nên".</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-34" class="guide-panel ">
+          <div class="guide-panel-group">Slide 34: BẢN ĐỒ ĐÁP ÁN CHUYÊN KHOA CHUẨN</div>
+          <h3 class="guide-panel-title">Đối chiếu hành vi y khoa</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>Bảng T-Chart tương phản cao hiển thị:
+  - 🟢 NÊN LÀM: Vệ sinh kỹ vùng mụn/vi khuẩn; Dùng sữa tắm pH 5.5; Dùng lăn khử mùi sau khi lau khô người; Thay tất và đồ lót hằng ngày.
+  - 🔴 KHÔNG NÊN LÀM: Dùng tay bẩn cạy mụn; Xả nước qua loa; Xịt lăn khử mùi đè lên mồ hôi chưa tắm; Mặc lại đồ lót cũ.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+        <div id="guide-slide-35" class="guide-panel ">
+          <div class="guide-panel-group">Slide 35: NGHI THỨC SẮC PHONG BÁC SĨ CHUYÊN KHOA!</div>
+          <h3 class="guide-panel-title">Thông điệp vàng từ Hội đồng Y khoa NovaStars</h3>
+          <div class="guide-panel-section">
+            <h4>🎯 NỘI DUNG:</h4>
+            <p>🎉 Nhiệt liệt chúc mừng tất cả các bác sĩ đã vượt qua kỳ thi và chính thức được sắc phong thành Bác sĩ Chuyên khoa Da liễu!
+  - Thông điệp cốt lõi: Để giữ cơ thể luôn sạch thơm và tự tin, hãy vệ sinh kỹ vùng mụn/vi khuẩn bằng sản phẩm pH 5.5, dùng lăn khử mùi đúng lúc da khô và thay mới đồ lót, tất chân mỗi ngày!
+- Tương tác: Bấm nút "Bắn pháo vinh danh" để kích hoạt hiệu ứng pháo hoa Confetti chúc mừng.</p>
+          </div>
+          <div class="guide-panel-section">
+            <h4>🗣️ HƯỚNG DẪN GIÁO VIÊN:</h4>
+            <p></p>
+          </div>
+        </div>
+      </div>
+    </aside>
   </div>
 
   <script src="puberty_app.js"></script>
